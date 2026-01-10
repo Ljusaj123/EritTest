@@ -44,6 +44,7 @@
 
   .sidenav {
     background-color: white;
+    color: $font-dark;
 
     .user-profile {
       display: flex;
@@ -75,9 +76,6 @@
         #username {
           font-weight: 600;
           font-size: 18px;
-        }
-        #role {
-          font-size: 14px;
         }
       }
     }

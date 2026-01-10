@@ -1,25 +1,30 @@
 @use '@angular/material' as mat;
 @use './styles/variables.scss' as *;
+@use './styles/overrides/checkbox.scss' as *;
+@use './styles/overrides/radio.scss' as *;
+@use './styles/overrides/expansion.scss' as *;
+@use './styles/base/utilities.scss' as *;
 
 @include mat.core();
 
-
 html {
   height: 100%;
-  @include mat.theme((
-    color: (
-      theme-type: light,
-    ),
-    density: 0,
-  ));
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+      ),
+      density: 0,
+    )
+  );
 }
-
-
 
 body {
   color-scheme: light;
   font-family: 'Open Sans';
+  font-size: 14px;
   color: $font-dark;
   margin: 0;
   height: 100%;
 }
+

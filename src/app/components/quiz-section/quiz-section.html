@@ -1,0 +1,14 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header class="panel-header">
+    <div class="panel-header-container">
+      <span class="section-number"> {{ section.order }}</span>
+      <span class="section-title"> {{ section.title }}</span>
+    </div>
+  </mat-expansion-panel-header>
+
+  <div class="questions-container">
+    @for (question of section.questions; track question.order) {
+    <app-quiz-question [question]="question"> </app-quiz-question>
+    }
+  </div>
+</mat-expansion-panel>

@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+@use '../variables.scss' as *;
+
+@include mat.expansion-overrides(
+  (
+    container-shape: 0,
+    container-elevation-shadow: none,
+    header-hover-state-layer-color: $base-2,
+    header-focus-state-layer-color: $base-2,
+    header-collapsed-state-height: 42px,
+    header-expanded-state-height: 42px,
+    container-background-color: white,
+  )
+);
+
+.mat-expansion-panel-header.mat-expanded {
+  background-color: $base-2;
+
+  &:focus,
+  &:hover {
+    background-color: $base-2 !important;
+  }
+}

@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+@use '../variables.scss' as *;
+
+@include mat.radio-overrides(
+  (
+    selected-focus-icon-color: $accent-1,
+    selected-hover-icon-color: $accent-1,
+    selected-icon-color: $accent-1,
+    selected-pressed-icon-color: $accent-1,
+  )
+);
+
+.mat-mdc-radio-button * {
+  transition: none !important;
+  animation: none !important;
+}
+
+.mat-ripple .mat-radio-ripple,
+.mat-focus-indicator,
+.mdc-radio__background::before {
+  display: none;
+}
+
+.mdc-radio__background .mdc-radio__outer-circle {
+  border-color: $accent-1 !important;
+}
+
+.red-radio-flag {
+  @include mat.radio-overrides(
+    (
+      selected-focus-icon-color: $alert,
+      selected-hover-icon-color: $alert,
+      selected-icon-color: $alert,
+      selected-pressed-icon-color: $alert,
+    )
+  );
+
+  .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: $alert !important;
+  }
+}

@@ -1,0 +1,10 @@
+<mat-radio-group class="answers-container">
+  @for (answer of answers; track answer.id) {
+  <mat-radio-button [value]="answer.id" [ngClass]="{ 'red-radio-flag': answer.isFlag }">
+    {{ answer.label }}
+    @if(answer.isFlag){
+    <span class="points">{{ points }}pt</span>
+    }
+  </mat-radio-button>
+  }
+</mat-radio-group>

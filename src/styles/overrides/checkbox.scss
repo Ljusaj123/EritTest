@@ -1,0 +1,42 @@
+@use '@angular/material' as mat;
+@use '../variables.scss' as *;
+
+@include mat.checkbox-overrides(
+  (
+    selected-checkmark-color: white,
+    selected-focus-icon-color: $accent-1,
+    selected-hover-icon-color: $accent-1,
+    selected-icon-color: $accent-1,
+  )
+);
+
+.mdc-checkbox__background {
+  border-color: $accent-1 !important;
+}
+
+.mat-mdc-checkbox-ripple,
+.mdc-checkbox__ripple {
+  display: none;
+}
+
+.mat-mdc-checkbox * {
+  transition: none !important;
+  animation: none !important;
+}
+
+.red-checkbox-flag {
+  @include mat.checkbox-overrides(
+    (
+      selected-checkmark-color: white,
+      selected-focus-icon-color: $alert,
+      selected-focus-state-layer-color: $alert,
+      selected-hover-icon-color: $alert,
+      selected-icon-color: $alert,
+      unselected-pressed-state-layer-color: $alert,
+    )
+  );
+
+  .mdc-checkbox__background {
+    border-color: $alert !important;
+  }
+}

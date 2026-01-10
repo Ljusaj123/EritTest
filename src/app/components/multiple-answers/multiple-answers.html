@@ -1,0 +1,10 @@
+<div class="answers">
+  @for (answer of answers; track answer.id) {
+  <mat-checkbox [ngClass]="{ 'red-checkbox-flag': answer.isFlag }">
+    {{ answer.label }}
+    @if(answer.isFlag){
+    <span class="points">{{ points }}pt</span>
+    }
+  </mat-checkbox>
+  }
+</div>

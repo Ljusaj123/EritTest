@@ -1,0 +1,15 @@
+@use '../variables.scss' as *;
+
+.surface {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.points {
+  background-color: $base-darker;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: $font-dark;
+  margin-left: 10px;
+}

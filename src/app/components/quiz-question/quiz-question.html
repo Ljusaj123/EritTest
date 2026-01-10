@@ -1,0 +1,12 @@
+<div class="question">
+  <div class="question-header">
+    <span class="question-number">{{ question.order }}</span>
+    <span class="question-title">{{ question.title }}</span>
+  </div>
+
+  @switch (question.type) { @case ('single') {
+  <app-single-answer [answers]="question.answers" [points]="question.points" />
+  } @case ('multiple') {
+  <app-multiple-answers [answers]="question.answers" [points]="question.points" />
+  } @default { } }
+</div>
