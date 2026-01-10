@@ -1,0 +1,102 @@
+@use '../../../styles/variables.scss' as *;
+
+.header {
+  background-color: $color-primary;
+
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 16px;
+
+  span {
+    color: white;
+    width: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.5;
+    text-indent: 20px;
+    letter-spacing: 0.25px;
+  }
+
+  .icon-button {
+    width: 48px;
+    height: 48px;
+    color: white;
+
+    span {
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    .header-icon {
+      height: 28px;
+      width: 28px;
+      font-size: 28px;
+    }
+  }
+}
+
+.sidenav-container {
+  height: calc(100vh - 55px);
+  position: absolute;
+  top: 55px;
+
+  .sidenav {
+    background-color: white;
+
+    .user-profile {
+      display: flex;
+      gap: 12px;
+      padding-left: 25px;
+      padding-top: 20px;
+      padding-bottom: 15px;
+      background-color: $base-2;
+
+      #avatar {
+        height: 44px;
+        width: 44px;
+        border-radius: 50%;
+        background-color: $accent-1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .summary {
+        font-family: 'Open Sans';
+        display: flex;
+        flex-direction: column;
+
+        #username {
+          font-weight: 600;
+          font-size: 18px;
+        }
+        #role {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .nav-item {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 0 10px 25px;
+      margin-right: 10px;
+
+      .nav-icon {
+        font-size: 20px;
+      }
+    }
+
+    .nav-item:hover {
+      background-color: $base-2;
+      border-radius: 0 56px 56px 0;
+    }
+  }
+}

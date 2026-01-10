@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use './styles/variables.scss' as *;
+
+@include mat.core();
+
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      theme-type: light,
+    ),
+    density: 0,
+  ));
+}
+
+
+
+body {
+  color-scheme: light;
+  font-family: 'Open Sans';
+  color: $font-dark;
+  margin: 0;
+  height: 100%;
+}
