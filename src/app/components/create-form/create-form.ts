@@ -21,12 +21,10 @@ import { MatButtonModule } from '@angular/material/button';
 export class CreateForm {
   public options: { label: string; value: string }[] = [];
   public questions: { label: string; value: string }[] = [];
-  selectedType: any;
 
   public form: FormGroup = this.initializeForm();
 
   get conditions(): FormArray {
-    console.log(this.form.get('conditions') as FormArray);
     return this.form.get('conditions') as FormArray;
   }
 
