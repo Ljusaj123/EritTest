@@ -1,5 +1,5 @@
 export interface AnswerOption {
-  id: string;
+  id: number;
   label: string;
   isFlag?: boolean;
 }
@@ -13,5 +13,7 @@ export interface Section {
 export interface Question {
   order: string;
   title: string;
+  type: 'multiple' | 'single';
+  points: number
   answers: AnswerOption[];
 }

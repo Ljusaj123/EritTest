@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+  <div class="conditions">
+    <span class="conditions-title">Conditional logic</span>
+
+    <div formArrayName="conditions">
+      <div
+        class="options"
+        *ngFor="let group of conditions.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <span>If</span>
+
+        <mat-form-field>
+          <mat-select formControlName="option" placeholder="Select option">
+            @for (option of options; track $index) {
+            <mat-option [value]="option.value">
+              {{ option.value }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <span>then open</span>
+
+        <mat-form-field>
+          <mat-select formControlName="type" placeholder="Select">
+            <mat-option value="section">Section</mat-option>
+            <mat-option value="question">Question</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select formControlName="target" placeholder="Select">
+            @for (question of questions; track $index) {
+            <mat-option [value]="question.value">
+              {{ question.value }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        @if(isLast(i)){
+        <mat-icon (click)="addCondition()">add_circle</mat-icon>
+        } @if(!isLast(i)){
+        <mat-icon (click)="removeCondition(i)">delete</mat-icon>
+        }
+      </div>
+    </div>
+  </div>
+</form>

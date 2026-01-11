@@ -1,0 +1,27 @@
+@use '../../../styles/variables.scss' as *;
+
+form {
+  background-color: $base;
+
+  .conditions {
+    padding: 15px 0 10px 20px;
+
+    &-title {
+      font-weight: 600;
+    }
+
+    .options {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+
+      mat-icon {
+        color: $color-primary;
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+      }
+    }
+  }
+}

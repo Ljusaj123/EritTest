@@ -4,6 +4,7 @@
 @use './styles/overrides/radio.scss' as *;
 @use './styles/overrides/expansion.scss' as *;
 @use './styles/base/utilities.scss' as *;
+@use './styles/overrides/select.scss' as *;
 
 @include mat.core();
 

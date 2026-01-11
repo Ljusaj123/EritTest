@@ -3,6 +3,7 @@ import { QuizSection } from '../../components/quiz-section/quiz-section';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
+import { Section } from '../../shared/models';
 
 @Component({
   selector: 'app-admin-page',
@@ -11,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './admin.scss',
 })
 export class Admin {
-  public sections = [
+  public sections: Section[] = [
     {
       order: 'S-001',
       title: 'Lacinia quis vel eros donec ac odio tempor orci',

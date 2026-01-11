@@ -1,7 +1,7 @@
-    @use '../../../styles/variables.scss' as *;
-  .answers-container {
-    display: flex;
-    flex-direction: column;
-    padding: 0 20px 10px 50px;
-  }
+@use '../../../styles/variables.scss' as *;
 
+.answers-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 10px 50px;
+}
