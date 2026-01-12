@@ -1,10 +1,15 @@
-<div class="surface">
-  <div class="play-button-container">
-    <button matIconButton class="play-button">
-      <mat-icon style="color: white; font-size: 24px;">play_arrow</mat-icon>
-    </button>
+<div>
+  <p class="stepper">Naslovna-> Analitika i detekcija -> Upitnik</p>
+  <div class="surface">
+    <div class="play-button-container">
+      <button matIconButton class="play-button" (click)="startQuestionnaire()">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+    </div>
+    @for (section of questionnareData; track section.order) {
+    <app-quiz-section [section]="section"> </app-quiz-section>
+    }
+
+    <app-create-form></app-create-form>
   </div>
-  @for (section of sections; track section.order) {
-  <app-quiz-section [section]="section"> </app-quiz-section>
-  }
 </div>

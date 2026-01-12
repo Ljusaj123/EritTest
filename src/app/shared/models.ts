@@ -2,6 +2,7 @@ export interface AnswerOption {
   id: number;
   label: string;
   isFlag?: boolean;
+  points?: number;
 }
 
 export interface Section {
@@ -14,6 +15,14 @@ export interface Question {
   order: string;
   title: string;
   type: 'multiple' | 'single';
-  points: number
+  conditions?: Condition[];
   answers: AnswerOption[];
 }
+
+export interface Condition {
+  answerId: number;
+  type: ConditionTargetType;
+  target: string;
+}
+
+export type ConditionTargetType = 'section' | 'question';

@@ -5,8 +5,18 @@
   </div>
 
   @switch (question.type) { @case ('single') {
-  <app-single-answer [answers]="question.answers" [points]="question.points" />
+  <app-single-answer
+    [answers]="question.answers"
+    [showFlag]="false"
+    (selected)="onAnswerChange($event)"
+  >
+  </app-single-answer>
   } @case ('multiple') {
-  <app-multiple-answers [answers]="question.answers" [points]="question.points" />
-  } @default { } }
+  <app-multiple-answers
+    [answers]="question.answers"
+    [showFlag]="false"
+    (selected)="onAnswerChange($event)"
+  >
+  </app-multiple-answers>
+  } }
 </div>

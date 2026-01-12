@@ -1,0 +1,22 @@
+<div>
+  <p class="stepper">Naslovna-> Ispunjavanje upitnika</p>
+  <div class="surface">
+    <app-quiz-question
+      [question]="currentQuestion"
+      (selected)="onAnswerChange($event)"
+    ></app-quiz-question>
+
+    <div class="button-container">
+      <button
+        matButton="filled"
+        (click)="goBack()"
+        [disabled]="!history.length"
+        class="back-button"
+      >
+        Nazad
+      </button>
+
+      <button matButton="filled" (click)="goNext()" class="next-button">Dalje</button>
+    </div>
+  </div>
+</div>

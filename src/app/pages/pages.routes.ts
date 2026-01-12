@@ -7,11 +7,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./admin/admin').then((m) => m.Admin),
   },
-  // {
-  //   path: 'quiz',
-  //   loadComponent: () =>
-  //     import('./configuration/configuration.component').then(
-  //       (m) => m.ConfigurationComponent
-  //     ),
-  // },
+  {
+    path: 'questionnaire',
+    loadComponent: () =>
+      import('./questionnare/questionnare').then(
+        (m) => m.Questionnare
+      ),
+  },
 ];

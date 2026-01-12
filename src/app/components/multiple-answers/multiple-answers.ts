@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AnswerOption } from '../../shared/models';
 
@@ -10,7 +10,18 @@ import { AnswerOption } from '../../shared/models';
   styleUrl: './multiple-answers.scss',
 })
 export class MultipleAnswers {
-  @Input() answers!: AnswerOption[];
+  @Input() answers: AnswerOption[] = [];
   @Input() points!: number;
   @Input() isFlag: boolean = false;
+  @Input() showFlag: boolean = true;
+
+  @Output() selected = new EventEmitter<number[]>();
+
+  private selectedIds = new Set<number>();
+
+  toggle(id: number) {
+    this.selectedIds.has(id) ? this.selectedIds.delete(id) : this.selectedIds.add(id);
+
+    this.selected.emit([...this.selectedIds]);
+  }
 }

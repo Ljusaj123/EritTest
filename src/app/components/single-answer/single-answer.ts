@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { AnswerOption } from '../../shared/models';
 
@@ -10,7 +10,9 @@ import { AnswerOption } from '../../shared/models';
   styleUrl: './single-answer.scss',
 })
 export class SingleAnswer {
-  @Input() answers!: AnswerOption[];
+  @Input() answers: AnswerOption[] = [];
   @Input() isFlag: boolean = false;
   @Input() points: number = 0;
+  @Input() showFlag: boolean = true;
+  @Output() selected = new EventEmitter<number>();
 }

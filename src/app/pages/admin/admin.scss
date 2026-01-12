@@ -1,20 +1,20 @@
 @use '../../../styles/variables.scss' as *;
 
 .play-button-container {
-  display: flex;
-  justify-content: right;
   margin-bottom: 15px;
-}
 
-.play-button {
-  background-color: $accent-1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-}
+  .play-button {
+    margin-left: auto;
+    background-color: $accent-1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
 
-.admin-page{
-    background-color: white;
+    mat-icon {
+      color: white;
+      font-size: 24px;
+    }
+  }
 }

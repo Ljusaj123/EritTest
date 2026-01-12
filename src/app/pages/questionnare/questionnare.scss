@@ -1,0 +1,26 @@
+@use '../../../styles/variables.scss' as *;
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+
+  .mdc-button {
+    padding: 11px 30px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    line-height:36px ;
+
+    &.back-button {
+      background-color: $base-darker;
+      color: $font-dark;
+    }
+
+    &.next-button {
+      background-color: $accent-1;
+      color: white;
+      font-weight: 600;
+    }
+  }
+}

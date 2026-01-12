@@ -1,8 +1,8 @@
-<mat-radio-group class="answers-container">
+<mat-radio-group class="answers-container" (change)="selected.emit($event.value)">
   @for (answer of answers; track answer.id) {
-  <mat-radio-button [value]="answer.id" [ngClass]="{ 'red-radio-flag': answer.isFlag }">
+  <mat-radio-button [value]="answer.id" [ngClass]="{ 'red-radio-flag': answer.isFlag && showFlag  }">
     {{ answer.label }}
-    @if(answer.isFlag){
+    @if(answer.isFlag && showFlag ){
     <span class="points">{{ points }}pt</span>
     }
   </mat-radio-button>
