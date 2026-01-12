@@ -1,0 +1,22 @@
+.option {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    .comment-input,
+    .label-input {
+      flex: 1;
+    }
+  }
+
+  .comment-input,
+  .label-input {
+    flex: 1;
+  }
+}

@@ -83,4 +83,18 @@ export class QuestionnareService {
   getQuestionnare() {
     return this.questionnareData;
   }
+
+  getAllSectionOrders(): string[] {
+    return this.questionnareData.map((section) => section.order);
+  }
+
+  getQuestionOrdersBySection(sectionOrder: string): string[] {
+    const section = this.questionnareData.find((s) => s.order === sectionOrder);
+
+    if (!section) {
+      return [];
+    }
+
+    return section.questions.map((q) => q.order);
+  }
 }
