@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@use '../variables.scss' as *;
+@use '../abstracts/variables.scss' as *;
 
 @include mat.radio-overrides(
   (

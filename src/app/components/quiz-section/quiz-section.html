@@ -15,51 +15,53 @@
 
 <ng-template #contextMenu>
   <div class="first-menu-container" cdkMenu>
-    <mat-icon cdkMenuItem [cdkMenuTriggerFor]="questionMenu">add_circle</mat-icon>
+    <mat-icon cdkMenuItem [cdkMenuTriggerFor]="questionMenu" class="icon--lg icon--accent"
+      >add_circle</mat-icon
+    >
     <mat-divider style="width: 100%"></mat-divider>
-    <mat-icon>file_copy</mat-icon>
-    <mat-icon>share</mat-icon>
+    <mat-icon class="icon--lg icon--accent">file_copy</mat-icon>
+    <mat-icon class="icon--lg icon--accent">share</mat-icon>
   </div>
 </ng-template>
 
 <ng-template #questionMenu>
   <div class="second-menu-container" cdkMenu>
     <div class="menu-option">
-      <mat-icon>apps</mat-icon>
+      <mat-icon class="icon--sm">apps</mat-icon>
       <span> New section </span>
     </div>
     <mat-divider></mat-divider>
     <div class="menu-option">
-      <mat-icon> short_text</mat-icon>
+      <mat-icon class="icon--sm"> short_text</mat-icon>
       <span> Short text </span>
     </div>
     <div class="menu-option">
-      <mat-icon>subject</mat-icon>
+      <mat-icon class="icon--sm">subject</mat-icon>
       <span> Long text </span>
     </div>
     <mat-divider></mat-divider>
     <div class="menu-option">
-      <mat-icon>radio_button_checked</mat-icon>
+      <mat-icon class="icon--sm">radio_button_checked</mat-icon>
       <span> Multiple choice </span>
     </div>
     <div class="menu-option">
-      <mat-icon>check_box</mat-icon>
+      <mat-icon class="icon--sm">check_box</mat-icon>
       <span> Check-boxes </span>
     </div>
 
     <div class="menu-option">
-      <mat-icon>arrow_drop_down_circle</mat-icon>
+      <mat-icon class="icon--sm">arrow_drop_down_circle</mat-icon>
       <span> Drop-down </span>
     </div>
     <mat-divider></mat-divider>
 
     <div class="menu-option">
-      <mat-icon>event</mat-icon>
+      <mat-icon class="icon--sm">event</mat-icon>
       <span> Date </span>
     </div>
 
     <div class="menu-option">
-      <mat-icon>description</mat-icon>
+      <mat-icon class="icon--sm">description</mat-icon>
       <span> Document </span>
     </div>
   </div>

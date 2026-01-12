@@ -1,22 +1,13 @@
 <mat-toolbar class="header">
-  <button matIconButton class="icon-button" (click)="drawer.toggle()">
-    <mat-icon class="header-icon">
-      {{ drawer.opened ? 'menu_open' : 'menu' }}
-    </mat-icon>
-  </button>
-  <span>Upitnik</span>
-
-  <button matIconButton class="icon-button" style="pointer-events: none">
-    <mat-icon class="header-icon">notifications_active</mat-icon>
-  </button>
-
-  <button matIconButton class="icon-button" style="pointer-events: none">
-    <mat-icon class="header-icon">info</mat-icon>
-  </button>
-
-  <button matIconButton class="icon-button" style="pointer-events: none">
-    <span>HR</span>
-  </button>
+  <mat-icon class="icon--lg icon--white" style="cursor: pointer;" (click)="drawer.toggle()">
+    {{ drawer.opened ? 'menu_open' : 'menu' }}
+  </mat-icon>
+  <span class="header-title">Upitnik</span>
+  <div class="icons-container">
+    <mat-icon class="icon--lg icon--white">notifications_active</mat-icon>
+    <mat-icon class="icon--lg icon--white">info</mat-icon>
+    <span id="hr-text">HR</span>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
@@ -30,27 +21,27 @@
     </div>
     <mat-nav-list class="nav-list">
       <a mat-list-item class="nav-item">
-        <mat-icon class="nav-icon">sms_failed</mat-icon>
+        <mat-icon>sms_failed</mat-icon>
         <span> Prijave </span>
       </a>
       <a mat-list-item class="nav-item">
-        <mat-icon class="nav-icon">home</mat-icon>
+        <mat-icon>home</mat-icon>
         <span>Projekti</span>
       </a>
       <a mat-list-item class="nav-item">
-        <mat-icon class="nav-icon">bar_chart</mat-icon>
+        <mat-icon>bar_chart</mat-icon>
         <span> Analitika i detekcija </span>
       </a>
       <a mat-list-item class="nav-item">
-        <mat-icon class="nav-icon">assignment</mat-icon>
+        <mat-icon>assignment</mat-icon>
         <span> Izvještavanje </span>
       </a>
       <a mat-list-item class="nav-item">
-        <mat-icon class="nav-icon">group</mat-icon>
+        <mat-icon>group</mat-icon>
         <span> Administracija korisnika </span>
       </a>
       <a mat-list-item class="nav-item">
-        <mat-icon class="nav-icon">settings</mat-icon>
+        <mat-icon>settings</mat-icon>
         <span>Postavke</span>
       </a>
     </mat-nav-list>

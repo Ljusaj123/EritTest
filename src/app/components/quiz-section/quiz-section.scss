@@ -1,4 +1,4 @@
-@use '../../../styles/variables.scss' as *;
+@use '../../../styles/abstracts/variables.scss' as *;
 
 .panel-header {
   background-color: $base-2;
@@ -31,18 +31,13 @@
   box-shadow: 0px 0px 20px 0px #00000012;
   padding: 10px;
 
-  mat-icon {
-    color: $accent-1;
-    font-size: 28px;
-    width: 28px;
-    height: 28px;
-  }
 }
 
 .second-menu-container {
   box-shadow: 0px 0px 20px 0px #00000012;
   padding: 5px;
   width: 186px;
+  color: $font-dark;
 
   .menu-option {
     padding: 6px 7px;

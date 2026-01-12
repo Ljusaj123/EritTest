@@ -1,0 +1,125 @@
+@use '../abstracts/variables.scss' as *;
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+@mixin btn-icon-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+@mixin icon-base {
+  background-color: transparent;
+}
+
+@mixin icon-size($size) {
+  @if $size == sm {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+  } @else if $size == md {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  } @else if $size == lg {
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+  }
+}
+
+@mixin icon-normal {
+  color: $base-darker;
+}
+
+@mixin icon-primary {
+  color: $color-primary;
+}
+
+@mixin icon-white {
+  color: white;
+}
+
+@mixin icon-accent {
+  color: $accent-1;
+}
+
+@mixin btn-icon-size($size) {
+  @if $size == sm {
+    height: 28px;
+    width: 28px;
+
+    mat-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+    }
+  } @else if $size == md {
+    height: 36px;
+    width: 36px;
+
+    mat-icon {
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+    }
+  } @else if $size == lg {
+    height: 44px;
+    width: 44px;
+
+    mat-icon {
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+    }
+  } @else if $size == xl {
+    height: 52px;
+    width: 52px;
+
+    mat-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 28px;
+    }
+  }
+}
+
+@mixin btn-size($size) {
+  @if $size == sm {
+    height: 28px;
+  } @else if $size == md {
+    height: 36px;
+  } @else if $size == lg {
+    height: 44px;
+  }
+}
+
+@mixin btn-normal {
+  color: $font-dark;
+  background: $base-darker;
+}
+
+@mixin btn-primary {
+  color: white;
+  background: $color-primary;
+  font-weight: 600;
+}
+
+@mixin btn-accent {
+  background: $accent-1;
+  color: white;
+  font-weight: 600;
+}
+
+@mixin btn-disabled {
+  background-color: $disabled-light;
+  pointer-events: none;
+  color: $disabled-dark;
+}

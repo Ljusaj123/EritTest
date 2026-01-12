@@ -1,8 +1,7 @@
-@use '../../../styles/variables.scss' as *;
+@use '../../../styles/abstracts/variables.scss' as *;
 
 .header {
   background-color: $color-primary;
-
   height: 55px;
   display: flex;
   justify-content: space-between;
@@ -11,12 +10,26 @@
 
   span {
     color: white;
+    font-weight: 600;
+  }
+
+  .header-title {
     width: 100%;
-    font-weight: 500;
+
     font-size: 20px;
-    line-height: 1.5;
+    line-height: 32px;
     text-indent: 20px;
     letter-spacing: 0.25px;
+  }
+
+  .icons-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    #hr-text {
+      font-size: 22px;
+    }
   }
 
   .icon-button {
@@ -27,12 +40,6 @@
     span {
       font-weight: 600;
       font-size: 22px;
-    }
-
-    .header-icon {
-      height: 28px;
-      width: 28px;
-      font-size: 28px;
     }
   }
 }
@@ -49,9 +56,7 @@
     .user-profile {
       display: flex;
       gap: 12px;
-      padding-left: 25px;
-      padding-top: 20px;
-      padding-bottom: 15px;
+      padding: 20px 0 15px 25px;
       background-color: $base-2;
 
       #avatar {
@@ -69,7 +74,6 @@
       }
 
       .summary {
-        font-family: 'Open Sans';
         display: flex;
         flex-direction: column;
 
@@ -80,21 +84,20 @@
       }
     }
 
-    .nav-item {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      padding: 10px 0 10px 25px;
-      margin-right: 10px;
+    .nav-list {
+      padding: 8px 10px 8px 0;
 
-      .nav-icon {
-        font-size: 20px;
+      .nav-item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 11px 25px;
       }
-    }
 
-    .nav-item:hover {
-      background-color: $base-2;
-      border-radius: 0 56px 56px 0;
+      .nav-item:hover {
+        background-color: $base-2;
+        border-radius: 0 56px 56px 0;
+      }
     }
   }
 }

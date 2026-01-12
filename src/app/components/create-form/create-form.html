@@ -1,4 +1,23 @@
 <form [formGroup]="form">
+  <div class="question" formGroupName="question">
+    <div class="question-header">
+      <span>{{questionOrder}}</span>
+      <mat-form-field>
+        <input matInput placeholder="Question" formControlName="title"/>
+      </mat-form-field>
+      <mat-icon>drag_indicator</mat-icon>
+    </div>
+    <div formArrayName="options" class="options">
+      <!-- @for (option of options.controls; let i = $index; track i) {
+      <app-option [type]="'check-box'" [formGroup]="option"> </app-option>
+      } -->
+    </div>
+
+    <div class="add-option">
+      <mat-icon (click)="addOption()" class="icon--primary icon--lg">add_circle</mat-icon>
+      <span>Add option</span>
+    </div>
+  </div>
   <div class="conditions">
     <span class="conditions-title">Conditional logic</span>
 
@@ -12,7 +31,7 @@
 
         <mat-form-field>
           <mat-select formControlName="option" placeholder="Select option">
-            @for (option of options; track $index) {
+            @for (option of conditionOptions; track $index) {
             <mat-option [value]="option.value">
               {{ option.value }}
             </mat-option>
@@ -40,11 +59,12 @@
         </mat-form-field>
 
         @if(isLast(i)){
-        <mat-icon (click)="addCondition()">add_circle</mat-icon>
+        <mat-icon (click)="addCondition()" class="icon--primary icon--lg">add_circle</mat-icon>
         } @if(!isLast(i)){
-        <mat-icon (click)="removeCondition(i)">delete</mat-icon>
+        <mat-icon (click)="removeCondition(i)" class="icon--primary icon--lg">delete</mat-icon>
         }
       </div>
     </div>
   </div>
+
 </form>

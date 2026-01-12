@@ -1,0 +1,97 @@
+@use '../components/buttons' as btn;
+
+//default
+.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button {
+  @include btn.btn-base;
+  @include btn.btn-size(md);
+}
+
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base {
+  @include btn.btn-icon-base;
+  @include btn.btn-icon-size(md);
+}
+
+.mat-icon.material-icons {
+  @include btn.icon-base;
+  @include btn.icon-size(md);
+}
+
+//sizes
+.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--sm {
+  @include btn.btn-size(sm);
+}
+
+.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--md {
+  @include btn.btn-size(md);
+}
+
+.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--lg {
+  @include btn.btn-size(lg);
+}
+
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--sm {
+  @include btn.btn-icon-size(sm);
+}
+
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--md {
+  @include btn.btn-icon-size(md);
+}
+
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--lg {
+  @include btn.btn-icon-size(lg);
+}
+
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--xl {
+  @include btn.btn-icon-size(xl);
+}
+
+
+
+.mat-icon.material-icons.icon--sm {
+  @include btn.icon-size(sm);
+}
+
+.mat-icon.material-icons.icon--md {
+  @include btn.icon-size(md);
+}
+
+.mat-icon.material-icons.icon--lg {
+  @include btn.icon-size(lg);
+}
+
+//types
+.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--normal,
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--normal {
+  @include btn.btn-normal;
+}
+
+.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--primary,
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--primary {
+  @include btn.btn-primary;
+}
+
+.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--accent,
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--accent {
+  @include btn.btn-accent;
+}
+
+.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--disabled,
+.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--disabled {
+  @include btn.btn-disabled;
+}
+
+.mat-icon.material-icons.icon--primary {
+  @include btn.icon-primary;
+}
+
+.mat-icon.material-icons.icon--normal {
+  @include btn.icon-normal;
+}
+
+.mat-icon.material-icons.icon--white {
+  @include btn.icon-white;
+}
+
+.mat-icon.material-icons.icon--accent {
+  @include btn.icon-accent;
+}
