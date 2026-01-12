@@ -5,7 +5,7 @@ import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { Option } from './option/option';
+// import { Option } from './option/option';
 
 @Component({
   selector: 'app-create-form',
@@ -16,7 +16,6 @@ import { Option } from './option/option';
     CommonModule,
     MatButtonModule,
     MatInputModule,
-    Option,
   ],
   templateUrl: './create-form.html',
   styleUrl: './create-form.scss',
