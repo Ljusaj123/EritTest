@@ -1,20 +1,22 @@
 <div class="question">
-  <div class="question-header">
-    <span class="question-number">{{ question.order }}</span>
-    <span class="question-title">{{ question.title }}</span>
+  <div [appElementHeader]="!showFlag">
+    <div class="element-header-container">
+      <span class="element-number"> {{ question.questionId }}</span>
+      <span class="element-title"> {{ question.label }}</span>
+    </div>
   </div>
 
-  @switch (question.type) { @case ('single') {
+  @switch (question.type) { @case ('multiple') {
   <app-single-answer
     [answers]="question.answers"
-    [showFlag]="false"
+    [showFlag]="showFlag"
     (selected)="onAnswerChange($event)"
   >
   </app-single-answer>
-  } @case ('multiple') {
+  } @case ('checkboxes') {
   <app-multiple-answers
     [answers]="question.answers"
-    [showFlag]="false"
+    [showFlag]="showFlag"
     (selected)="onAnswerChange($event)"
   >
   </app-multiple-answers>

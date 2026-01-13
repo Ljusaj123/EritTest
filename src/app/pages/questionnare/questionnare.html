@@ -3,6 +3,7 @@
   <div class="surface">
     <app-quiz-question
       [question]="currentQuestion"
+      [showFlag]="false"
       (selected)="onAnswerChange($event)"
     ></app-quiz-question>
 
@@ -10,8 +11,9 @@
       <button
         matButton="filled"
         (click)="goBack()"
+        ngClass=""
         [disabled]="!history.length"
-        class="btn--normal"
+        [class]="!history.length ? 'btn--disabled' : 'btn--normal'"
       >
         Nazad
       </button>

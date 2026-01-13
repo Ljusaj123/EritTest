@@ -1,0 +1,51 @@
+@use '../abstracts/variables.scss' as *;
+@use '@angular/material' as mat;
+
+@mixin checkbox-accent {
+  @include mat.checkbox-overrides(
+    (
+      selected-checkmark-color: white,
+      selected-focus-icon-color: $accent-1,
+      selected-hover-icon-color: $accent-1,
+      selected-icon-color: $accent-1,
+    )
+  );
+
+  .mdc-checkbox__background {
+    border-color: $accent-1 !important;
+  }
+}
+
+@mixin checkbox-alert {
+  @include mat.checkbox-overrides(
+    (
+      selected-checkmark-color: white,
+      selected-focus-icon-color: $alert,
+      selected-focus-state-layer-color: $alert,
+      selected-hover-icon-color: $alert,
+      selected-icon-color: $alert,
+      unselected-pressed-state-layer-color: $alert,
+    )
+  );
+
+  .mdc-checkbox__background {
+    border-color: $alert !important;
+  }
+}
+
+@mixin checkbox-disabled {
+  @include mat.checkbox-overrides(
+    (
+      selected-checkmark-color: white,
+      selected-focus-icon-color: $disabled-light,
+      selected-focus-state-layer-color: $disabled-light,
+      selected-hover-icon-color: $disabled-light,
+      selected-icon-color: $disabled-light,
+      unselected-pressed-state-layer-color: $disabled-light,
+    )
+  );
+
+  .mdc-checkbox__background {
+    border-color: $alert !important;
+  }
+}

@@ -1,5 +1,5 @@
 <div class="option" [formGroup]="formGroup">
-  <div>
+  <div style="gap: 10px">
     @switch (type) { @case ('check-box') {
     <mat-checkbox formControlName="isFlag"></mat-checkbox>
     } @case ('multiple') {
@@ -13,7 +13,7 @@
 
   <div>
     @switch (type) { @case ('check-box') {
-    <mat-checkbox class="red-checkbox-flag" formControlName="isFlag"> Red flag </mat-checkbox>
+    <mat-checkbox class="checkbox--alert" formControlName="isFlag"> Red flag </mat-checkbox>
     } @case ('multiple') {
     <mat-radio-button class="red-radio-flag" formControlName="isFlag"> Red flag </mat-radio-button>
     } }
@@ -22,7 +22,7 @@
       <input matInput placeholder="Comment" formControlName="comment" />
     </mat-form-field>
 
-    <mat-form-field class="points" style="width: 100px;">
+    <mat-form-field class="points-input" style="width: 100px;">
       <input matInput placeholder="Points" formControlName="points" />
     </mat-form-field>
   </div>

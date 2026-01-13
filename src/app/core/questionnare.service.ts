@@ -7,18 +7,18 @@ import { Section } from '../shared/models';
 export class QuestionnareService {
   public questionnareData: Section[] = [
     {
-      order: 'S-001',
-      title: 'Lacinia quis vel eros donec ac odio tempor orci',
+      sectionId: 'S-001',
+      label: 'Lacinia quis vel eros donec ac odio tempor orci',
       questions: [
         {
-          order: 'Q-001',
-          title: 'Lacinia quis vel eros donec ac odio tempor orci',
-          type: 'multiple',
+          questionId: 'Q-001',
+          label: 'Lacinia quis vel eros donec ac odio tempor orci',
+          type: 'checkboxes',
           answers: [
-            { id: 1, label: 'Donec ac odio tempor orci' },
-            { id: 2, label: 'Lacinia quis vel eros donec ac odio tempor orci' },
-            { id: 3, label: 'Odio tempor orci' },
-            { id: 4, label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 2 },
+            { answerId: 1, label: 'Donec ac odio tempor orci' },
+            { answerId: 2, label: 'Lacinia quis vel eros donec ac odio tempor orci' },
+            { answerId: 3, label: 'Odio tempor orci' },
+            { answerId: 4, label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 2 },
           ],
           conditions: [
             {
@@ -29,12 +29,12 @@ export class QuestionnareService {
           ],
         },
         {
-          order: 'Q-002',
-          title: 'Donec ac odio tempor orci',
-          type: 'single',
+          questionId: 'Q-002',
+          label: 'Donec ac odio tempor orci',
+          type: 'multiple',
           answers: [
-            { id: 1, label: 'Yes' },
-            { id: 2, label: 'No', isFlag: true, points: 1 },
+            { answerId: 1, label: 'Yes' },
+            { answerId: 2, label: 'No', isFlag: true, points: 1 },
           ],
           conditions: [
             {
@@ -47,33 +47,33 @@ export class QuestionnareService {
       ],
     },
     {
-      order: 'S-002',
-      title: 'Tarcu non sodales neque sodales.',
+      sectionId: 'S-002',
+      label: 'Tarcu non sodales neque sodales.',
       questions: [
         {
-          order: 'Q-001',
-          title: 'Lacinia quis vel eros donec ac odio tempor orci',
-          type: 'single',
+          questionId: 'Q-001',
+          label: 'Lacinia quis vel eros donec ac odio tempor orci',
+          type: 'multiple',
           answers: [
-            { id: 1, label: 'Yes' },
-            { id: 2, label: 'No', isFlag: true, points: 1 },
+            { answerId: 1, label: 'Yes' },
+            { answerId: 2, label: 'No', isFlag: true, points: 1 },
           ],
         },
       ],
     },
     {
-      order: 'S-003',
-      title: 'Additional questions',
+      sectionId: 'S-003',
+      label: 'Additional questions',
       questions: [
         {
-          order: 'Q-001',
-          title: 'Why did you choose No?',
+          questionId: 'Q-001',
+          label: 'Why did you choose No?',
           type: 'multiple',
           answers: [
-            { id: 1, label: 'Donec ac odio tempor orci' },
-            { id: 2, label: 'Lacinia quis vel eros donec ac odio tempor orci' },
-            { id: 3, label: 'Odio tempor orci' },
-            { id: 4, label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 3 },
+            { answerId: 1, label: 'Donec ac odio tempor orci' },
+            { answerId: 2, label: 'Lacinia quis vel eros donec ac odio tempor orci' },
+            { answerId: 3, label: 'Odio tempor orci' },
+            { answerId: 4, label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 3 },
           ],
         },
       ],
@@ -85,16 +85,16 @@ export class QuestionnareService {
   }
 
   getAllSectionOrders(): string[] {
-    return this.questionnareData.map((section) => section.order);
+    return this.questionnareData.map((section) => section.sectionId);
   }
 
   getQuestionOrdersBySection(sectionOrder: string): string[] {
-    const section = this.questionnareData.find((s) => s.order === sectionOrder);
+    const section = this.questionnareData.find((section) => section.sectionId === sectionOrder);
 
     if (!section) {
       return [];
     }
 
-    return section.questions.map((q) => q.order);
+    return section.questions.map((question) => question.questionId);
   }
 }

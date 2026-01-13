@@ -1,0 +1,47 @@
+@use '../abstracts/variables.scss' as *;
+@use '@angular/material' as mat;
+
+@mixin radio-accent {
+  @include mat.radio-overrides(
+    (
+      selected-focus-icon-color: $accent-1,
+      selected-hover-icon-color: $accent-1,
+      selected-icon-color: $accent-1,
+      selected-pressed-icon-color: $accent-1,
+    )
+  );
+
+  .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: $accent-1 !important;
+  }
+}
+
+@mixin radio-alert {
+  @include mat.radio-overrides(
+    (
+      selected-focus-icon-color: $alert,
+      selected-hover-icon-color: $alert,
+      selected-icon-color: $alert,
+      selected-pressed-icon-color: $alert,
+    )
+  );
+
+  .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: $alert !important;
+  }
+}
+
+@mixin radio-disabled {
+  @include mat.radio-overrides(
+    (
+      selected-focus-icon-color: $disabled-light,
+      selected-hover-icon-color: $disabled-light,
+      selected-icon-color: $disabled-light,
+      selected-pressed-icon-color: $disabled-light,
+    )
+  );
+
+  .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: $disabled-light !important;
+  }
+}

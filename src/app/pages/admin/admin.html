@@ -6,7 +6,7 @@
         <mat-icon>play_arrow</mat-icon>
       </button>
     </div>
-    @for (section of questionnareData; track section.order) {
+    @for (section of questionnareData; track section.sectionId) {
     <app-quiz-section [section]="section"> </app-quiz-section>
     }
 

@@ -1,0 +1,17 @@
+@use '../components/radio' as cb;
+
+.mat-mdc-radio-button {
+  @include cb.radio-accent;
+}
+
+.mat-mdc-radio-button.radio--accent {
+  @include cb.radio-accent;
+}
+
+.mat-mdc-radio-button.radio--alert {
+  @include cb.radio-alert;
+}
+
+.mat-mdc-radio-button.radio--disabled {
+  @include cb.radio-disabled;
+}

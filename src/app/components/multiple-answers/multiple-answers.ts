@@ -11,7 +11,6 @@ import { AnswerOption } from '../../shared/models';
 })
 export class MultipleAnswers {
   @Input() answers: AnswerOption[] = [];
-  @Input() points!: number;
   @Input() isFlag: boolean = false;
   @Input() showFlag: boolean = true;
 

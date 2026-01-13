@@ -43,12 +43,13 @@ export class CreateForm {
 
   get availableConditionOptions(): string[] {
     const usedOptions = this.conditions.controls
-      .map((c) => c.get('option')?.value)
-      .filter((v): v is string => !!v);
+      .map((condition) => condition.get('option')?.value);
 
-    return this.options.controls
-      .map((opt) => opt.get('label')?.value)
-      .filter((label): label is string => !!label && !usedOptions.includes(label));
+    const a =  this.options.controls
+      .map((option) => option.get('label')?.value)
+      .filter((label) => !usedOptions.includes(label));
+
+      return a;
   }
 
   constructor(private questionnareService: QuestionnareService) {
@@ -102,9 +103,9 @@ export class CreateForm {
 
   private createCondition(): FormGroup {
     const group = new FormGroup({
-      option: new FormControl<string | null>('', Validators.required),
+      option: new FormControl<string>('', Validators.required),
       type: new FormControl<'section' | 'question' | null>(null, Validators.required),
-      target: new FormControl<string | null>(null, Validators.required),
+      target: new FormControl<string>('', Validators.required),
     });
 
     group.get('type')!.valueChanges.subscribe(() => {

@@ -1,13 +1,18 @@
 @use '@angular/material' as mat;
 @use './abstracts/variables.scss' as *;
+@use './abstracts/_helper.scss' as *;
 @use './overrides/checkbox.scss' as *;
 @use './overrides/radio.scss' as *;
 @use './overrides/expansion.scss' as *;
-@use './overrides/select.scss' as *;
+@use './overrides/inputs.scss' as *;
 
 @use './base/utilities.scss' as *;
-@use './components/buttons' as *;
-@use './materials/buttons' as *;
+@use './components/button' as *;
+@use './components/checkbox' as *;
+@use './materials/button' as *;
+@use './materials/checkbox' as *;
+@use './materials/radio' as *;
+@use './components/radio' as *;
 
 @include mat.core();
 

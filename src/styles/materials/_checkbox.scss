@@ -1,0 +1,17 @@
+@use '../components/checkbox' as cb;
+
+.mat-mdc-checkbox {
+  @include cb.checkbox-accent;
+}
+
+.mat-mdc-checkbox.checkbox--accent {
+  @include cb.checkbox-accent;
+}
+
+.mat-mdc-checkbox.checkbox--alert {
+  @include cb.checkbox-alert;
+}
+
+.mat-mdc-checkbox.checkbox--disabled {
+  @include cb.checkbox-disabled;
+}

@@ -1,8 +1,8 @@
 <mat-toolbar class="header">
-  <mat-icon class="icon--lg icon--white" style="cursor: pointer;" (click)="drawer.toggle()">
+  <mat-icon class="icon--lg icon--white cursor-pointer" (click)="drawer.toggle()">
     {{ drawer.opened ? 'menu_open' : 'menu' }}
   </mat-icon>
-  <span class="header-title">Upitnik</span>
+  <span class="header-title">{{headerText}}</span>
   <div class="icons-container">
     <mat-icon class="icon--lg icon--white">notifications_active</mat-icon>
     <mat-icon class="icon--lg icon--white">info</mat-icon>

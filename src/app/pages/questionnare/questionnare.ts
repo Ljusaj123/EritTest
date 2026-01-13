@@ -28,11 +28,11 @@ export class Questionnare {
   }
 
   onAnswerChange(value: number | number[]) {
-    this.answersState.set(this.currentQuestion.order, value);
+    this.answersState.set(this.currentQuestion.questionId, value);
   }
 
   goNext() {
-    const answer = this.answersState.get(this.currentQuestion.order);
+    const answer = this.answersState.get(this.currentQuestion.questionId);
     if (!answer) return;
 
     this.history.push({
@@ -76,7 +76,7 @@ export class Questionnare {
   navigateByCondition(condition: Condition) {
     if (condition.type === 'section') {
       const sectionIndex = this.questionnareData.findIndex(
-        (section) => section.order === condition.target
+        (section) => section.sectionId === condition.target
       );
 
       if (sectionIndex != -1) {
@@ -88,7 +88,7 @@ export class Questionnare {
     if (condition.type === 'question') {
       const section = this.questionnareData[this.currentSectionIndex];
       const questionIndex = section.questions.findIndex(
-        (question) => question.order === condition.target
+        (question) => question.questionId === condition.target
       );
       if (questionIndex != -1) {
         this.currentQuestionIndex = questionIndex;

@@ -12,7 +12,6 @@ import { AnswerOption } from '../../shared/models';
 export class SingleAnswer {
   @Input() answers: AnswerOption[] = [];
   @Input() isFlag: boolean = false;
-  @Input() points: number = 0;
   @Input() showFlag: boolean = true;
   @Output() selected = new EventEmitter<number>();
 }
