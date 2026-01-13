@@ -32,7 +32,7 @@
 
         <mat-form-field>
           <mat-select formControlName="option" placeholder="Select option">
-            @for (option of availableConditionOptions; track option) {
+            @for (option of getAvailableConditionOptions(i); track option) {
             <mat-option [value]="option">
               {{ option }}
             </mat-option>

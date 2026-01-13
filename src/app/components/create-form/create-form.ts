@@ -41,16 +41,18 @@ export class CreateForm {
     return this.form.get('question')?.get('options') as FormArray<FormGroup>;
   }
 
-  get availableConditionOptions(): string[] {
-    const usedOptions = this.conditions.controls
-      .map((condition) => condition.get('option')?.value);
+getAvailableConditionOptions(index: number): string[] {
+  const usedOptions = this.conditions.controls
+    .map((condition, i) =>
+      i !== index ? condition.get('option')?.value : null
+    )
+    .filter(Boolean);
 
-    const a =  this.options.controls
-      .map((option) => option.get('label')?.value)
-      .filter((label) => !usedOptions.includes(label));
+  return this.options.controls
+    .map(option => option.get('label')?.value)
+    .filter(label => !usedOptions.includes(label));
+}
 
-      return a;
-  }
 
   constructor(private questionnareService: QuestionnareService) {
     this.sectionOrders = this.questionnareService.getAllSectionOrders();
