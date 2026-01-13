@@ -1,9 +1,12 @@
-<div class="answers">
+<div class="answers-container">
   @for (answer of answers; track answer.answerId) {
-  <mat-checkbox [ngClass]="{ 'checkbox--alert': answer.isFlag && showFlag }" (change)="toggle(answer.answerId)">
+  <mat-checkbox
+    [ngClass]="{ 'checkbox--alert': answer.isFlag && showFlag }"
+    (change)="toggle(answer.answerId)"
+  >
     {{ answer.label }}
 
-    {{answer.isFlag && showFlag}}
+    {{ answer.isFlag && showFlag }}
     @if(answer.isFlag && showFlag){
     <span class="points">{{ answer.points }}pt</span>
     }

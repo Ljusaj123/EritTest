@@ -7,18 +7,18 @@
   </div>
 
   @switch (question.type) { @case ('multiple') {
-  <app-single-answer
+  <app-multiple-question
     [answers]="question.answers"
     [showFlag]="showFlag"
     (selected)="onAnswerChange($event)"
   >
-  </app-single-answer>
+  </app-multiple-question>
   } @case ('checkboxes') {
-  <app-multiple-answers
+  <app-checkbox-question
     [answers]="question.answers"
     [showFlag]="showFlag"
     (selected)="onAnswerChange($event)"
   >
-  </app-multiple-answers>
+  </app-checkbox-question>
   } }
 </div>

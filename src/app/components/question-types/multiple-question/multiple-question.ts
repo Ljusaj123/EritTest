@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
-import { AnswerOption } from '../../shared/models';
+import { AnswerOption } from '@shared/models';
 
 @Component({
-  selector: 'app-single-answer',
+  selector: 'app-multiple-question',
   imports: [MatRadioModule, CommonModule],
-  templateUrl: './single-answer.html',
-  styleUrl: './single-answer.scss',
+  templateUrl: './multiple-question.html',
+  styleUrl: './multiple-question.scss',
 })
-export class SingleAnswer {
+export class MultipleQuestion {
   @Input() answers: AnswerOption[] = [];
   @Input() isFlag: boolean = false;
   @Input() showFlag: boolean = true;

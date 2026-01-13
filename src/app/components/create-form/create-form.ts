@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { Option } from './option/option';
-import { QuestionnareService } from '../../core/questionnare.service';
+import { QuestionnareService } from '@core/questionnare.service';
 
 @Component({
   selector: 'app-create-form',

@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { AnswerOption } from '../../shared/models';
+import { AnswerOption } from '@shared/models';
 
 @Component({
-  selector: 'app-multiple-answers',
+  selector: 'app-checkbox-question',
   imports: [MatCheckboxModule, CommonModule],
-  templateUrl: './multiple-answers.html',
-  styleUrl: './multiple-answers.scss',
+  templateUrl: './checkbox-question.html',
+  styleUrl: './checkbox-question.scss',
 })
-export class MultipleAnswers {
+export class CheckboxQuestion {
   @Input() answers: AnswerOption[] = [];
   @Input() isFlag: boolean = false;
   @Input() showFlag: boolean = true;

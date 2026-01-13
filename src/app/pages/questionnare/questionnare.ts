@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Condition, Section } from '../../shared/models';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { QuizQuestion } from '../../components/quiz-question/quiz-question';
-import { QuestionnareService } from '../../core/questionnare.service';
+import { Condition, Section } from '@shared/models';
+import { QuestionnareService } from '@core/questionnare.service';
 
 @Component({
   selector: 'app-questionnare',
