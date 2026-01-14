@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { CreateAction, Section } from '@shared/models';
+import { CreateAction, QuestionType, Section } from '@shared/models';
 import { ContextMenu } from '../context-menu/context-menu';
 import { QuestionnareService } from '@core/questionnare.service';
 import { CreateForm } from '../create-form/create-form';
@@ -32,6 +32,7 @@ export class QuizSection {
   public newQuestionId: string | null = null;
 
   private questionnareService = inject(QuestionnareService);
+  public questionType: QuestionType = '';
 
   setActiveSection(sectionId: string) {
     this.activeSectionId = sectionId;
@@ -42,10 +43,11 @@ export class QuizSection {
     if (action.type === 'section') {
       this.questionnareService.createSection();
     }
+    this.questionType = action.questionType;
 
     if (action.type === 'question') {
       this.newQuestionId = this.questionnareService.createQuestion(
-        action.questionType,
+        action.questionType ?? 'check-boxes',
         this.activeSectionId
       );
       if (!this.newQuestionId) return;

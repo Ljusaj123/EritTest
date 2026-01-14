@@ -14,13 +14,13 @@ export class CheckboxQuestion {
   @Input() isFlag: boolean = false;
   @Input() showFlag: boolean = true;
 
-  @Output() selected = new EventEmitter<number[]>();
+  @Output() selected = new EventEmitter<string[]>();
 
-  private selectedIds = new Set<number>();
+  private selectedAnswers = new Set<string>();
 
-  toggle(id: number) {
-    this.selectedIds.has(id) ? this.selectedIds.delete(id) : this.selectedIds.add(id);
+  toggle(label: string) {
+    this.selectedAnswers.has(label) ? this.selectedAnswers.delete(label) : this.selectedAnswers.add(label);
 
-    this.selected.emit([...this.selectedIds]);
+    this.selected.emit([...this.selectedAnswers]);
   }
 }

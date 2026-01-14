@@ -12,7 +12,6 @@ export interface Question {
   answers: AnswerOption[];
 }
 export interface AnswerOption {
-  answerId: number;
   label: string;
   isFlag?: boolean;
   comment?: string;
@@ -20,16 +19,17 @@ export interface AnswerOption {
 }
 
 export interface Condition {
-  answerId: number | null;
+  answerId: string;
   type: ConditionTargetType;
   target: string;
 }
 
 export type ConditionTargetType = 'section' | 'question' | null;
 
-export type CreateAction =
-  | { type: 'section' }
-  | { type: 'question'; questionType: QuestionType };
+export interface CreateAction {
+  type: 'section' | 'question';
+  questionType: QuestionType;
+}
 
 export type QuestionType =
   | 'short-text'
@@ -38,5 +38,5 @@ export type QuestionType =
   | 'multiple'
   | 'check-boxes'
   | 'date'
-  | 'document';
-
+  | 'document'
+  | '';

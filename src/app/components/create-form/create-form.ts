@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { Option } from './option/option';
 import { QuestionnareService } from '@core/questionnare.service';
-import { AnswerOption, Condition, Question } from '@shared/models';
+import { AnswerOption, Condition, Question, QuestionType } from '@shared/models';
 
 @Component({
   selector: 'app-create-form',
@@ -26,6 +26,7 @@ import { AnswerOption, Condition, Question } from '@shared/models';
 export class CreateForm {
   @Input() questionId: string = '';
   @Input() sectionId: string = '';
+  @Input() type: QuestionType = '';
 
   public conditionOptions: { label: string; value: string }[] = [];
   public questions: { label: string; value: string }[] = [];
@@ -54,14 +55,13 @@ export class CreateForm {
       this.patchForm(question);
     });
 
-    this.form.valueChanges
-      .subscribe(value => {
-        this.questionnareService.updateActiveQuestion({
-          label: value.question.title,
-          answers: value.question.options,
-          conditions: value.conditions
-        });
+    this.form.valueChanges.subscribe((value) => {
+      this.questionnareService.updateActiveQuestion({
+        label: value.question.title,
+        answers: value.question.options,
+        conditions: value.conditions,
       });
+    });
   }
 
   getAvailableConditionOptions(index: number): string[] {
@@ -124,8 +124,7 @@ export class CreateForm {
   }
 
   addOption(): void {
-    const index = this.options.length + 1;
-    this.options.push(this.createOption(`Option ${index}`));
+    this.options.push(this.createOption());
   }
 
   removeCondition(index: number): void {
@@ -142,9 +141,8 @@ export class CreateForm {
     return new FormGroup({
       conditions: new FormArray([this.createCondition()]),
       question: new FormGroup({
-        order: new FormControl(this.questionId),
         title: new FormControl<string>('', Validators.required),
-        options: new FormArray([this.createOption(`Option 1`)]),
+        options: new FormArray([this.createOption()]),
       }),
     });
   }
@@ -157,9 +155,9 @@ export class CreateForm {
     });
   }
 
-  private createOption(label: string = ''): FormGroup {
+  private createOption(): FormGroup {
     return new FormGroup({
-      label: new FormControl<string>(label, Validators.required),
+      label: new FormControl<string>('', Validators.required),
       isFlag: new FormControl<boolean>(false, Validators.required),
       comment: new FormControl<string>('', Validators.required),
       points: new FormControl<number | null>(null, Validators.required),

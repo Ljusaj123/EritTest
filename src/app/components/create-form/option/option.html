@@ -1,9 +1,11 @@
 <div class="option" [formGroup]="formGroup">
   <div style="gap: 10px">
-    @switch (type) { @case ('check-box') {
+    @switch (type) { @case ('check-boxes') {
     <mat-checkbox formControlName="isFlag"></mat-checkbox>
     } @case ('multiple') {
-    <mat-radio-button formControlName="isFlag"></mat-radio-button>
+    <mat-radio-group formControlName="isFlag">
+      <mat-radio-button> </mat-radio-button>
+    </mat-radio-group>
     } }
 
     <mat-form-field class="label-input">
@@ -12,17 +14,19 @@
   </div>
 
   <div>
-    @switch (type) { @case ('check-box') {
+    @switch (type) { @case ('check-boxes') {
     <mat-checkbox class="checkbox--alert" formControlName="isFlag"> Red flag </mat-checkbox>
     } @case ('multiple') {
-    <mat-radio-button class="red-radio-flag" formControlName="isFlag"> Red flag </mat-radio-button>
+    <mat-radio-group formControlName="isFlag">
+      <mat-radio-button class="radio--alert"> Red flag </mat-radio-button>
+    </mat-radio-group>
     } }
 
     <mat-form-field class="comment-input">
       <input matInput placeholder="Comment" formControlName="comment" />
     </mat-form-field>
 
-    <mat-form-field class="points-input" style="width: 100px;">
+    <mat-form-field class="points-input" style="width: 100px">
       <input matInput placeholder="Points" formControlName="points" />
     </mat-form-field>
   </div>

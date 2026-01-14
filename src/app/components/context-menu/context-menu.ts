@@ -20,7 +20,7 @@ export class ContextMenu {
   @Output() action = new EventEmitter<CreateAction>();
 
   createSection() {
-    this.action.emit({ type: 'section' });
+    this.action.emit({ type: 'section',  questionType: ''});
   }
 
   createQuestion(type: QuestionType) {

@@ -15,7 +15,7 @@ export class Questionnare {
   public currentSectionIndex: number = 0;
   public currentQuestionIndex: number = 0;
   public history: { section: number; question: number }[] = [];
-  public answersState = new Map<string, number | number[]>();
+  public answersState = new Map<string, string | string[]>();
 
   public questionnareData: Section[] = [];
 
@@ -27,7 +27,7 @@ export class Questionnare {
     return this.questionnareData[this.currentSectionIndex].questions[this.currentQuestionIndex];
   }
 
-  onAnswerChange(value: number | number[]) {
+  onAnswerChange(value: string | string[]) {
     this.answersState.set(this.currentQuestion.questionId, value);
   }
 
@@ -49,7 +49,7 @@ export class Questionnare {
 
     const matchedCondition = conditions.find((condition: Condition) =>
       Array.isArray(answer)
-        ? answer.includes(condition.answerId ?? 0)
+        ? answer.includes(condition.answerId)
         : condition.answerId === answer
     );
 

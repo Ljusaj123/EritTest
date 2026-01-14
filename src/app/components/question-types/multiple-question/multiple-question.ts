@@ -13,5 +13,5 @@ export class MultipleQuestion {
   @Input() answers: AnswerOption[] = [];
   @Input() isFlag: boolean = false;
   @Input() showFlag: boolean = true;
-  @Output() selected = new EventEmitter<number>();
+  @Output() selected = new EventEmitter<string>();
 }

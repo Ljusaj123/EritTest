@@ -9,7 +9,7 @@
     </div>
     <div formArrayName="options" class="options">
       @for (option of options.controls; let i = $index; track i) {
-      <app-option [type]="'check-box'" [formGroup]="option"> </app-option>
+      <app-option [type]="type" [formGroup]="option"></app-option>
       }
       <div class="add-option">
         <mat-icon (click)="addOption()" class="icon--primary icon--lg cursor-pointer"

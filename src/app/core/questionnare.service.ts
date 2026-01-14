@@ -21,20 +21,17 @@ export class QuestionnareService {
           label: 'Lacinia quis vel eros donec ac odio tempor orci',
           type: 'check-boxes',
           answers: [
-            { answerId: 1, label: 'Donec ac odio tempor orci' },
-            { answerId: 2, label: 'Lacinia quis vel eros donec ac odio tempor orci' },
-            { answerId: 3, label: 'Odio tempor orci' },
-            { answerId: 4, label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 2 },
+            { label: 'Donec ac odio tempor orci' },
+            { label: 'Lacinia quis vel eros donec ac odio tempor orci' },
+            { label: 'Odio tempor orci' },
+            { label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 2 },
           ],
         },
         {
           questionId: 'Q-002',
           label: 'Donec ac odio tempor orci',
           type: 'multiple',
-          answers: [
-            { answerId: 1, label: 'Yes' },
-            { answerId: 2, label: 'No', isFlag: true, points: 1 },
-          ],
+          answers: [{ label: 'Yes' }, { label: 'No', isFlag: true, points: 1 }],
           conditions: [],
         },
       ],
@@ -47,10 +44,7 @@ export class QuestionnareService {
           questionId: 'Q-001',
           label: 'Lacinia quis vel eros donec ac odio tempor orci',
           type: 'multiple',
-          answers: [
-            { answerId: 1, label: 'Yes' },
-            { answerId: 2, label: 'No', isFlag: true, points: 1 },
-          ],
+          answers: [{ label: 'Yes' }, { label: 'No', isFlag: true, points: 1 }],
         },
       ],
     },
@@ -63,10 +57,10 @@ export class QuestionnareService {
           label: 'Lacinia quis vel eros donec ac odio tempor orci',
           type: 'multiple',
           answers: [
-            { answerId: 1, label: 'Donec ac odio tempor orci' },
-            { answerId: 2, label: 'Lacinia quis vel eros donec ac odio tempor orci' },
-            { answerId: 3, label: 'Odio tempor orci' },
-            { answerId: 4, label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 3 },
+            { label: 'Donec ac odio tempor orci' },
+            { label: 'Lacinia quis vel eros donec ac odio tempor orci' },
+            { label: 'Odio tempor orci' },
+            { label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 3 },
           ],
         },
       ],
@@ -115,28 +109,34 @@ export class QuestionnareService {
       type,
       answers: [
         {
-          answerId: 1,
           label: 'Option 1',
+          isFlag: false,
         },
       ],
       conditions: [
         {
-          answerId: null,
+          answerId: '',
           type: null,
           target: '',
         },
       ],
     });
 
+    console.log(this.questionnareData)
+
     return nextQuestionId;
   }
 
   setActiveQuestion(sectionId: string, questionId: string): void {
-    const section = this.questionnareData.find((section: Section) => section.sectionId === sectionId);
+    const section = this.questionnareData.find(
+      (section: Section) => section.sectionId === sectionId
+    );
     this.activeSection = sectionId;
     if (!section) return;
 
-    const question = section.questions.find((question: Question) => question.questionId === questionId);
+    const question = section.questions.find(
+      (question: Question) => question.questionId === questionId
+    );
     if (!question) return;
 
     this.activeQuestionSubject.next(question);
