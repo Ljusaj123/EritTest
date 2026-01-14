@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <div class="question" formGroupName="question">
     <div class="question-header">
-      <span>{{ questionOrder }}</span>
+      <span>{{ questionId }}</span>
       <mat-form-field>
         <input matInput placeholder="Question" formControlName="title" />
       </mat-form-field>
@@ -31,7 +31,7 @@
         <span>If</span>
 
         <mat-form-field>
-          <mat-select formControlName="option" placeholder="Select option">
+          <mat-select formControlName="answerId" placeholder="Select option">
             @for (option of getAvailableConditionOptions(i); track option) {
             <mat-option [value]="option">
               {{ option }}

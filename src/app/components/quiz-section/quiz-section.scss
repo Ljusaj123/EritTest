@@ -1,30 +1,4 @@
-@use '../../../styles/abstracts/variables.scss' as *;
-
 .questions-container {
   padding-top: 10px;
   padding-bottom: 15px;
-}
-
-.first-menu-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  box-shadow: 0px 0px 20px 0px #00000012;
-  padding: 10px;
-
-}
-
-.second-menu-container {
-  box-shadow: 0px 0px 20px 0px #00000012;
-  padding: 5px;
-  width: 186px;
-  color: $font-dark;
-
-  .menu-option {
-    padding: 6px 7px;
-    display: flex;
-    gap: 5px;
-    align-items: center;
-  }
 }

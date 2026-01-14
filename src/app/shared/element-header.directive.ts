@@ -7,15 +7,15 @@ import { Directive, ElementRef, Input, Renderer2, OnChanges } from '@angular/cor
 export class ElementHeaderDirective implements OnChanges {
   @Input('appElementHeader') isActive = false;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private element: ElementRef, private renderer: Renderer2) {}
 
   ngOnChanges() {
     if (this.isActive) {
-      this.renderer.addClass(this.el.nativeElement, 'element-header');
-      this.renderer.removeClass(this.el.nativeElement, 'question-header');
+      this.renderer.addClass(this.element.nativeElement, 'element-header');
+      this.renderer.removeClass(this.element.nativeElement, 'question-header');
     } else {
-      this.renderer.addClass(this.el.nativeElement, 'question-header');
-      this.renderer.removeClass(this.el.nativeElement, 'element-header');
+      this.renderer.addClass(this.element.nativeElement, 'question-header');
+      this.renderer.removeClass(this.element.nativeElement, 'element-header');
     }
   }
 }

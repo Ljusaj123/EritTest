@@ -1,0 +1,53 @@
+<ng-template #contextMenu>
+  <div class="context-menu background-white" cdkMenu>
+    <mat-icon cdkMenuItem [cdkMenuTriggerFor]="questionMenu" class="icon--lg icon--accent"
+      >add_circle</mat-icon
+    >
+    <mat-divider></mat-divider>
+    <mat-icon cdkMenuItem class="icon--lg icon--accent" >content_copy</mat-icon>
+    <mat-icon cdkMenuItem class="icon--lg icon--accent">device_hub</mat-icon>
+  </div>
+</ng-template>
+
+<ng-template #questionMenu>
+  <div class="context-submenu background-white" cdkMenu>
+    <div cdkMenuItem class="submenu-option cursor-pointer" (click)="createSection()">
+      <mat-icon class="icon--sm">apps</mat-icon>
+      <span> New section </span>
+    </div>
+    <mat-divider></mat-divider>
+    <div cdkMenuItem class="submenu-option cursor-pointer" (click)="createQuestion('short-text')" >
+      <mat-icon class="icon--sm"> short_text</mat-icon>
+      <span> Short text </span>
+    </div>
+    <div cdkMenuItem class="submenu-option cursor-pointer" (click)="createQuestion('long-text')" >
+      <mat-icon class="icon--sm">subject</mat-icon>
+      <span> Long text </span>
+    </div>
+    <mat-divider></mat-divider>
+    <div cdkMenuItem class="submenu-option cursor-pointer" (click)="createQuestion('multiple')" >
+      <mat-icon class="icon--sm">radio_button_checked</mat-icon>
+      <span> Multiple choice </span>
+    </div>
+    <div cdkMenuItem class="submenu-option cursor-pointer" (click)="createQuestion('check-boxes')" >
+      <mat-icon class="icon--sm">check_box</mat-icon>
+      <span> Check-boxes </span>
+    </div>
+
+    <div cdkMenuItem class="submenu-option cursor-pointer" (click)="createQuestion('drop-down')" >
+      <mat-icon class="icon--sm">expand_circle_down</mat-icon>
+      <span> Drop-down </span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div cdkMenuItem class="submenu-option cursor-pointer" (click)="createQuestion('date')" >
+      <mat-icon class="icon--sm">event</mat-icon>
+      <span> Date </span>
+    </div>
+
+    <div cdkMenuItem class="submenu-option cursor-pointer" (click)="createQuestion('document')">
+      <mat-icon class="icon--sm">description</mat-icon>
+      <span> Document </span>
+    </div>
+  </div>
+</ng-template>

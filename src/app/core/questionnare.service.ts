@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Section } from '@shared/models';
+import { Question, QuestionType, Section } from '@shared/models';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuestionnareService {
+  private activeQuestionSubject = new BehaviorSubject<Question | null>(null);
+  public activeQuestion$ = this.activeQuestionSubject.asObservable();
+
+  public activeSection: string = '';
+
   public questionnareData: Section[] = [
     {
       sectionId: 'S-001',
@@ -13,19 +19,12 @@ export class QuestionnareService {
         {
           questionId: 'Q-001',
           label: 'Lacinia quis vel eros donec ac odio tempor orci',
-          type: 'checkboxes',
+          type: 'check-boxes',
           answers: [
             { answerId: 1, label: 'Donec ac odio tempor orci' },
             { answerId: 2, label: 'Lacinia quis vel eros donec ac odio tempor orci' },
             { answerId: 3, label: 'Odio tempor orci' },
             { answerId: 4, label: 'Vel eros donec ac odio tempor orci', isFlag: true, points: 2 },
-          ],
-          conditions: [
-            {
-              answerId: 4,
-              type: 'section',
-              target: 'S-003',
-            },
           ],
         },
         {
@@ -36,13 +35,7 @@ export class QuestionnareService {
             { answerId: 1, label: 'Yes' },
             { answerId: 2, label: 'No', isFlag: true, points: 1 },
           ],
-          conditions: [
-            {
-              answerId: 2,
-              type: 'section',
-              target: 'S-002',
-            },
-          ],
+          conditions: [],
         },
       ],
     },
@@ -67,7 +60,7 @@ export class QuestionnareService {
       questions: [
         {
           questionId: 'Q-001',
-          label: 'Why did you choose No?',
+          label: 'Lacinia quis vel eros donec ac odio tempor orci',
           type: 'multiple',
           answers: [
             { answerId: 1, label: 'Donec ac odio tempor orci' },
@@ -96,5 +89,88 @@ export class QuestionnareService {
     }
 
     return section.questions.map((question) => question.questionId);
+  }
+
+  createSection(): void {
+    const lastSectionId = this.questionnareData[this.questionnareData.length - 1].sectionId;
+    const section: Section = {
+      sectionId: this.nextId(lastSectionId),
+      label: 'New section',
+      questions: [],
+    };
+
+    this.questionnareData.push(section);
+  }
+
+  createQuestion(type: QuestionType, activeSectionId: string): string | null {
+    const section = this.questionnareData.find((section) => section.sectionId === activeSectionId);
+    if (!section) return null;
+
+    const lastQuestionId = section.questions[section.questions.length - 1].questionId;
+    const nextQuestionId = this.nextId(lastQuestionId);
+
+    section.questions.push({
+      questionId: nextQuestionId,
+      label: '',
+      type,
+      answers: [
+        {
+          answerId: 1,
+          label: 'Option 1',
+        },
+      ],
+      conditions: [
+        {
+          answerId: null,
+          type: null,
+          target: '',
+        },
+      ],
+    });
+
+    return nextQuestionId;
+  }
+
+  setActiveQuestion(sectionId: string, questionId: string): void {
+    const section = this.questionnareData.find((section: Section) => section.sectionId === sectionId);
+    this.activeSection = sectionId;
+    if (!section) return;
+
+    const question = section.questions.find((question: Question) => question.questionId === questionId);
+    if (!question) return;
+
+    this.activeQuestionSubject.next(question);
+  }
+
+  updateActiveQuestion(patch: Partial<Question>): void {
+    const current = this.activeQuestionSubject.value;
+    if (!current) return;
+
+    const updated = { ...current, ...patch };
+    this.syncToStore(updated);
+  }
+
+  private syncToStore(updated: Question): void {
+    const section = this.questionnareData.find(
+      (section: Section) => section.sectionId === this.activeSection
+    );
+    if (!section) return;
+
+    const index = section.questions.findIndex(
+      (question: Question) => question.questionId === updated.questionId
+    );
+
+    if (index !== -1) {
+      section.questions[index] = updated;
+      return;
+    }
+  }
+
+  private nextId(lastId: string): string {
+    const [prefix, num] = lastId.split('-');
+
+    const next = Number(num) + 1;
+
+    return `${prefix}-${next.toString().padStart(num.length, '0')}`;
   }
 }

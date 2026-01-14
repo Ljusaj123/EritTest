@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { Option } from './option/option';
 import { QuestionnareService } from '@core/questionnare.service';
+import { AnswerOption, Condition, Question } from '@shared/models';
 
 @Component({
   selector: 'app-create-form',
@@ -23,8 +24,8 @@ import { QuestionnareService } from '@core/questionnare.service';
   styleUrl: './create-form.scss',
 })
 export class CreateForm {
-  @Input() questionOrder: string = 'Q-003';
-  @Input() sectionOrder: string = 'S-003';
+  @Input() questionId: string = '';
+  @Input() sectionId: string = '';
 
   public conditionOptions: { label: string; value: string }[] = [];
   public questions: { label: string; value: string }[] = [];
@@ -41,22 +42,67 @@ export class CreateForm {
     return this.form.get('question')?.get('options') as FormArray<FormGroup>;
   }
 
-getAvailableConditionOptions(index: number): string[] {
-  const usedOptions = this.conditions.controls
-    .map((condition, i) =>
-      i !== index ? condition.get('option')?.value : null
-    )
-    .filter(Boolean);
-
-  return this.options.controls
-    .map(option => option.get('label')?.value)
-    .filter(label => !usedOptions.includes(label));
-}
-
-
   constructor(private questionnareService: QuestionnareService) {
     this.sectionOrders = this.questionnareService.getAllSectionOrders();
-    this.questionOrders = this.questionnareService.getQuestionOrdersBySection(this.sectionOrder);
+    this.questionOrders = this.questionnareService.getQuestionOrdersBySection(this.sectionId);
+  }
+
+  ngOnInit() {
+    this.questionnareService.activeQuestion$.subscribe((question) => {
+      if (!question) return;
+
+      this.patchForm(question);
+    });
+
+    this.form.valueChanges
+      .subscribe(value => {
+        this.questionnareService.updateActiveQuestion({
+          label: value.question.title,
+          answers: value.question.options,
+          conditions: value.conditions
+        });
+      });
+  }
+
+  getAvailableConditionOptions(index: number): string[] {
+    const usedOptions = this.conditions.controls
+      .map((condition, i) => (i !== index ? condition.get('option')?.value : null))
+      .filter(Boolean);
+
+    return this.options.controls
+      .map((option) => option.get('label')?.value)
+      .filter((label) => !usedOptions.includes(label));
+  }
+
+  private patchForm(question: Question) {
+    this.form.reset();
+
+    this.form.get('question.title')?.setValue(question.label);
+
+    this.options.clear();
+
+    question.answers.forEach((answer: AnswerOption) => {
+      this.options.push(
+        new FormGroup({
+          label: new FormControl(answer.label, Validators.required),
+          isFlag: new FormControl(answer.isFlag ?? false),
+          comment: new FormControl(answer.comment ?? ''),
+          points: new FormControl(answer.points ?? null),
+        })
+      );
+    });
+
+    this.conditions.clear();
+
+    (question.conditions ?? []).forEach((condition: Condition) => {
+      this.conditions.push(
+        new FormGroup({
+          answerId: new FormControl(condition.answerId),
+          type: new FormControl(condition.type),
+          target: new FormControl(condition.target),
+        })
+      );
+    });
   }
 
   getTargetsForCondition(index: number) {
@@ -96,7 +142,7 @@ getAvailableConditionOptions(index: number): string[] {
     return new FormGroup({
       conditions: new FormArray([this.createCondition()]),
       question: new FormGroup({
-        order: new FormControl(this.questionOrder),
+        order: new FormControl(this.questionId),
         title: new FormControl<string>('', Validators.required),
         options: new FormArray([this.createOption(`Option 1`)]),
       }),
@@ -104,17 +150,11 @@ getAvailableConditionOptions(index: number): string[] {
   }
 
   private createCondition(): FormGroup {
-    const group = new FormGroup({
-      option: new FormControl<string>('', Validators.required),
+    return new FormGroup({
+      answerId: new FormControl<string>('', Validators.required),
       type: new FormControl<'section' | 'question' | null>(null, Validators.required),
       target: new FormControl<string>('', Validators.required),
     });
-
-    group.get('type')!.valueChanges.subscribe(() => {
-      group.get('target')!.reset();
-    });
-
-    return group;
   }
 
   private createOption(label: string = ''): FormGroup {

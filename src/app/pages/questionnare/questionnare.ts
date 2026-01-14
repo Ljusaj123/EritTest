@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { QuizQuestion } from '../../components/quiz-question/quiz-question';
-import { Condition, Section } from '@shared/models';
+import { Condition, Question, Section } from '@shared/models';
 import { QuestionnareService } from '@core/questionnare.service';
 
 @Component({
@@ -41,16 +41,22 @@ export class Questionnare {
     });
 
     const conditions = this.currentQuestion.conditions;
-    if (conditions) {
-      const matchedCondition = conditions.find((condition) =>
-        Array.isArray(answer) ? answer.includes(condition.answerId) : condition.answerId === answer
-      );
 
-      if (matchedCondition) {
-        this.navigateByCondition(matchedCondition);
-      } else {
-        this.defaultNext();
-      }
+    if (!conditions) {
+      this.defaultNext();
+      return;
+    }
+
+    const matchedCondition = conditions.find((condition: Condition) =>
+      Array.isArray(answer)
+        ? answer.includes(condition.answerId ?? 0)
+        : condition.answerId === answer
+    );
+
+    if (matchedCondition) {
+      this.navigateByCondition(matchedCondition);
+    } else {
+      this.defaultNext();
     }
   }
 
@@ -88,7 +94,7 @@ export class Questionnare {
     if (condition.type === 'question') {
       const section = this.questionnareData[this.currentSectionIndex];
       const questionIndex = section.questions.findIndex(
-        (question) => question.questionId === condition.target
+        (question: Question) => question.questionId === condition.target
       );
       if (questionIndex != -1) {
         this.currentQuestionIndex = questionIndex;

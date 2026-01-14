@@ -1,6 +1,6 @@
 <mat-toolbar class="header">
   <mat-icon class="icon--lg icon--white cursor-pointer" (click)="drawer.toggle()">
-    {{ drawer.opened ? 'menu_open' : 'menu' }}
+    {{ drawer.opened ? 'segment' : 'menu' }}
   </mat-icon>
   <span class="header-title">{{headerText}}</span>
   <div class="icons-container">
@@ -21,15 +21,15 @@
     </div>
     <mat-nav-list class="nav-list">
       <a mat-list-item class="nav-item">
-        <mat-icon>sms_failed</mat-icon>
+        <mat-icon>feedback</mat-icon>
         <span> Prijave </span>
       </a>
       <a mat-list-item class="nav-item">
-        <mat-icon>home</mat-icon>
+        <mat-icon>holiday_village</mat-icon>
         <span>Projekti</span>
       </a>
       <a mat-list-item class="nav-item">
-        <mat-icon>bar_chart</mat-icon>
+        <mat-icon>equalizer</mat-icon>
         <span> Analitika i detekcija </span>
       </a>
       <a mat-list-item class="nav-item">
@@ -37,7 +37,7 @@
         <span> Izvještavanje </span>
       </a>
       <a mat-list-item class="nav-item">
-        <mat-icon>group</mat-icon>
+        <mat-icon>people_alt</mat-icon>
         <span> Administracija korisnika </span>
       </a>
       <a mat-list-item class="nav-item">
