@@ -1,1 +1,30 @@
-<p>document-question works!</p>
+<div class="single-answer-container">
+  <input
+    type="file"
+    #fileInput
+    hidden
+    accept=".pdf,.doc,.docx"
+    (change)="onFileChange($event)"
+  />
+
+  <button
+    mat-stroked-button
+    color="primary"
+    (click)="fileInput.click()"
+  >
+    <mat-icon>upload_file</mat-icon>
+    Upload document
+  </button>
+
+  <span class="hint">
+    Supported formats: PDF, DOCX
+  </span>
+
+  @if (fileName) {
+    <span class="file-name">{{ fileName }}</span>
+  }
+
+  @if (answers[0]?.isFlag && showFlag) {
+    <span class="points">{{ answers[0].points }}pt</span>
+  }
+</div>

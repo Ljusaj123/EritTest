@@ -1,1 +1,17 @@
-<p>date-question works!</p>
+<div class="single-answer-container">
+  <mat-form-field style="width: 100%">
+    <input
+      matInput
+      [matDatepicker]="picker"
+      placeholder="Choose a date"
+      (dateChange)="onDateChange($event)"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  @if (answers[0]?.isFlag && showFlag) {
+  <span class="points">{{ answers[0].points }}pt</span>
+  }
+</div>

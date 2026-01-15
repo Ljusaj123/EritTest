@@ -1,26 +1,48 @@
 <div class="option" [formGroup]="formGroup">
   <div style="gap: 10px">
-    @switch (type) { @case ('check-boxes') {
-    <mat-checkbox formControlName="isFlag"></mat-checkbox>
+    @if (hasOptions(type)) { @switch (type) { @case ('check-boxes') {
+    <mat-checkbox></mat-checkbox>
     } @case ('multiple') {
-    <mat-radio-group formControlName="isFlag">
+    <mat-radio-group>
       <mat-radio-button> </mat-radio-button>
     </mat-radio-group>
+    } @case ('drop-down') {
+    <mat-icon>keyboard_arrow_down</mat-icon>
     } }
-
     <mat-form-field class="label-input">
       <input matInput placeholder="Option" formControlName="label" />
     </mat-form-field>
+
+    } @else { @switch (type){ @case('short-text'){
+    <mat-form-field class="label-input"
+    >
+      <input matInput disabled placeholder="User will enter long text"/>
+    </mat-form-field>
+
+    } @case('long-text'){
+    <mat-form-field class="label-input">
+      <textarea matInput rows="4" placeholder="User will enter long text" disabled></textarea>
+    </mat-form-field>
+
+    } @case('date'){
+    <mat-form-field class="label-input">
+      <input matInput [matDatepicker]="picker" placeholder="Pick a date" disabled />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    } @case('document'){
+    <div class="label-input">
+      <mat-icon>upload_file</mat-icon>
+      <span>User will upload a document</span>
+    </div>
+
+    } } }
   </div>
 
   <div>
-    @switch (type) { @case ('check-boxes') {
     <mat-checkbox class="checkbox--alert" formControlName="isFlag"> Red flag </mat-checkbox>
-    } @case ('multiple') {
-    <mat-radio-group formControlName="isFlag">
-      <mat-radio-button class="radio--alert"> Red flag </mat-radio-button>
-    </mat-radio-group>
-    } }
 
     <mat-form-field class="comment-input">
       <input matInput placeholder="Comment" formControlName="comment" />

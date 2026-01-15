@@ -32,8 +32,8 @@ export class CreateForm {
   public questions: { label: string; value: string }[] = [];
 
   public form: FormGroup = this.initializeForm();
-  public sectionOrders: string[] = [];
-  public questionOrders: string[] = [];
+  public sectionIds: string[] = [];
+  public questionIds: string[] = [];
 
   get conditions(): FormArray {
     return this.form.get('conditions') as FormArray;
@@ -44,8 +44,7 @@ export class CreateForm {
   }
 
   constructor(private questionnareService: QuestionnareService) {
-    this.sectionOrders = this.questionnareService.getAllSectionOrders();
-    this.questionOrders = this.questionnareService.getQuestionOrdersBySection(this.sectionId);
+    this.sectionIds = this.questionnareService.getAllSectionIds();
   }
 
   ngOnInit() {
@@ -74,46 +73,27 @@ export class CreateForm {
       .filter((label) => !usedOptions.includes(label));
   }
 
-  private patchForm(question: Question) {
-    this.form.reset();
+  hasOptions(type: QuestionType): boolean {
+    return ['multiple', 'check-boxes', 'drop-down'].includes(type);
+  }
 
-    this.form.get('question.title')?.setValue(question.label);
+  handleSelection(index: number) {
+    const type = this.conditions.at(index).get('type')?.value;
 
-    this.options.clear();
-
-    question.answers.forEach((answer: AnswerOption) => {
-      this.options.push(
-        new FormGroup({
-          label: new FormControl(answer.label, Validators.required),
-          isFlag: new FormControl(answer.isFlag ?? false),
-          comment: new FormControl(answer.comment ?? ''),
-          points: new FormControl(answer.points ?? null),
-        })
-      );
-    });
-
-    this.conditions.clear();
-
-    (question.conditions ?? []).forEach((condition: Condition) => {
-      this.conditions.push(
-        new FormGroup({
-          answerId: new FormControl(condition.answerId),
-          type: new FormControl(condition.type),
-          target: new FormControl(condition.target),
-        })
-      );
-    });
+    if (type === 'question') {
+      this.questionIds = this.questionnareService.getQuestionIdsBySection(this.sectionId);
+    }
   }
 
   getTargetsForCondition(index: number) {
     const type = this.conditions.at(index).get('type')?.value;
 
     if (type === 'section') {
-      return this.sectionOrders;
+      return this.sectionIds;
     }
 
     if (type === 'question') {
-      return this.questionOrders;
+      return this.questionIds;
     }
 
     return [];
@@ -124,7 +104,7 @@ export class CreateForm {
   }
 
   addOption(): void {
-    this.options.push(this.createOption());
+    this.options.push(this.createOption(`Option ${this.options.length + 1}`));
   }
 
   removeCondition(index: number): void {
@@ -155,12 +135,43 @@ export class CreateForm {
     });
   }
 
-  private createOption(): FormGroup {
+  private createOption(label: string = ''): FormGroup {
     return new FormGroup({
-      label: new FormControl<string>('', Validators.required),
+      label: new FormControl<string>(label, Validators.required),
       isFlag: new FormControl<boolean>(false, Validators.required),
       comment: new FormControl<string>('', Validators.required),
       points: new FormControl<number | null>(null, Validators.required),
+    });
+  }
+
+  private patchForm(question: Question) {
+    this.form.reset();
+
+    this.form.get('question.title')?.setValue(question.label);
+
+    this.options.clear();
+
+    question.answers.forEach((answer: AnswerOption) => {
+      this.options.push(
+        new FormGroup({
+          label: new FormControl(answer.label, Validators.required),
+          isFlag: new FormControl(answer.isFlag ?? false),
+          comment: new FormControl(answer.comment ?? ''),
+          points: new FormControl(answer.points ?? null),
+        })
+      );
+    });
+
+    this.conditions.clear();
+
+    (question.conditions ?? []).forEach((condition: Condition) => {
+      this.conditions.push(
+        new FormGroup({
+          answerId: new FormControl(condition.answerId),
+          type: new FormControl(condition.type),
+          target: new FormControl(condition.target),
+        })
+      );
     });
   }
 }

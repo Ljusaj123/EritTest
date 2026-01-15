@@ -1,1 +1,8 @@
-<p>short-text-question works!</p>
+<div class="single-answer-container">
+  <mat-form-field>
+    <input matInput placeholder="Your answer" type="text" (input)="onTextChange($event)" />
+  </mat-form-field>
+  @if (answers[0]?.isFlag && showFlag) {
+  <span class="points">{{ answers[0].points }}pt</span>
+  }
+</div>

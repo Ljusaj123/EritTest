@@ -5,6 +5,11 @@ import { Question } from '@shared/models';
 import { ElementHeaderDirective } from '@shared/element-header.directive';
 import { CheckboxQuestion } from '../question-types/checkbox-question/checkbox-question';
 import { MultipleQuestion } from '../question-types/multiple-question/multiple-question';
+import { ShortTextQuestion } from "../question-types/short-text-question/short-text-question";
+import { LongTextQuestion } from "../question-types/long-text-question/long-text-question";
+import { DropdownQuestion } from "../question-types/dropdown-question/dropdown-question";
+import { DateQuestion } from "../question-types/date-question/date-question";
+import { DocumentQuestion } from "../question-types/document-question/document-question";
 
 @Component({
   selector: 'app-quiz-question',
@@ -14,7 +19,12 @@ import { MultipleQuestion } from '../question-types/multiple-question/multiple-q
     ElementHeaderDirective,
     CheckboxQuestion,
     MultipleQuestion,
-  ],
+    ShortTextQuestion,
+    LongTextQuestion,
+    DropdownQuestion,
+    DateQuestion,
+    DocumentQuestion
+],
   templateUrl: './quiz-question.html',
   styleUrl: './quiz-question.scss',
 })

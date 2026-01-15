@@ -56,5 +56,15 @@
 .answers-container {
   display: flex;
   flex-direction: column;
-  padding: 0 20px 10px 50px;
+  padding: 10px 20px 10px 50px;
+}
+
+.single-answer-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px 10px 50px;
+
+  mat-form-field {
+    flex: 1;
+  }
 }

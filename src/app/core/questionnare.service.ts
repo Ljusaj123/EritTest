@@ -71,18 +71,20 @@ export class QuestionnareService {
     return this.questionnareData;
   }
 
-  getAllSectionOrders(): string[] {
+  getAllSectionIds(): string[] {
     return this.questionnareData.map((section) => section.sectionId);
   }
 
-  getQuestionOrdersBySection(sectionOrder: string): string[] {
-    const section = this.questionnareData.find((section) => section.sectionId === sectionOrder);
+  getQuestionIdsBySection(sectionId: string): string[] {
+    const section = this.questionnareData.find(
+      (section: Section) => section.sectionId === sectionId
+    );
 
     if (!section) {
       return [];
     }
 
-    return section.questions.map((question) => question.questionId);
+    return section.questions.map((question: Question) => question.questionId);
   }
 
   createSection(): void {
@@ -105,8 +107,9 @@ export class QuestionnareService {
 
     section.questions.push({
       questionId: nextQuestionId,
-      label: '',
+      label: 'Question',
       type,
+      isEditing: true,
       answers: [
         {
           label: 'Option 1',
@@ -122,9 +125,15 @@ export class QuestionnareService {
       ],
     });
 
-    console.log(this.questionnareData)
-
     return nextQuestionId;
+  }
+
+  removeEditingMode(): void {
+    this.questionnareData.forEach((section) => {
+      section.questions.forEach((question) => {
+        delete question.isEditing;
+      });
+    });
   }
 
   setActiveQuestion(sectionId: string, questionId: string): void {

@@ -10,15 +10,18 @@
     <div formArrayName="options" class="options">
       @for (option of options.controls; let i = $index; track i) {
       <app-option [type]="type" [formGroup]="option"></app-option>
-      }
+      } @if (hasOptions(type)) {
       <div class="add-option">
         <mat-icon (click)="addOption()" class="icon--primary icon--lg cursor-pointer"
           >add_circle</mat-icon
         >
         <span>Add option</span>
       </div>
+
+      }
     </div>
   </div>
+  @if (hasOptions(type)) {
   <div class="conditions">
     <span class="conditions-title">Conditional logic</span>
 
@@ -43,7 +46,7 @@
         <span>then open</span>
 
         <mat-form-field>
-          <mat-select formControlName="type" placeholder="Select">
+          <mat-select formControlName="type" placeholder="Select" (selectionChange)="handleSelection(i)">
             <mat-option value="section">Section</mat-option>
             <mat-option value="question">Question</mat-option>
           </mat-select>
@@ -71,4 +74,5 @@
       </div>
     </div>
   </div>
+  }
 </form>

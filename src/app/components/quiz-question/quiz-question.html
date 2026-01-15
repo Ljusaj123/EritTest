@@ -6,7 +6,21 @@
     </div>
   </div>
 
-  @switch (question.type) { @case ('multiple') {
+  @switch (question.type) { @case ('short-text') {
+  <app-short-text-question
+    [answers]="question.answers"
+    [showFlag]="showFlag"
+    (answered)="onAnswerChange($event)"
+  >
+  </app-short-text-question>
+  } @case ('long-text') {
+  <app-long-text-question
+    [answers]="question.answers"
+    [showFlag]="showFlag"
+    (answered)="onAnswerChange($event)"
+  >
+  </app-long-text-question>
+  } @case ('multiple') {
   <app-multiple-question
     [answers]="question.answers"
     [showFlag]="showFlag"
@@ -20,5 +34,26 @@
     (selected)="onAnswerChange($event)"
   >
   </app-checkbox-question>
+  } @case ('drop-down') {
+  <app-dropdown-question
+    [answers]="question.answers"
+    [showFlag]="showFlag"
+    (selected)="onAnswerChange($event)"
+  >
+  </app-dropdown-question>
+  } @case ('date') {
+  <app-date-question
+    [answers]="question.answers"
+    [showFlag]="showFlag"
+    (answered)="onAnswerChange($event)"
+  >
+  </app-date-question>
+  } @case ('document') {
+  <app-document-question
+    [answers]="question.answers"
+    [showFlag]="showFlag"
+    (answered)="onAnswerChange($event)"
+  >
+  </app-document-question>
   } }
 </div>

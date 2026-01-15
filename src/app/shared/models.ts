@@ -6,6 +6,7 @@ export interface Section {
 
 export interface Question {
   questionId: string;
+  isEditing?: boolean;
   label: string;
   type: QuestionType;
   conditions?: Condition[];

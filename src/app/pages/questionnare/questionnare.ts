@@ -42,19 +42,17 @@ export class Questionnare {
 
     const conditions = this.currentQuestion.conditions;
 
-    if (!conditions) {
+    if (!conditions || !conditions.length) {
       this.defaultNext();
       return;
     }
 
-    const matchedCondition = conditions.find((condition: Condition) =>
-      Array.isArray(answer)
-        ? answer.includes(condition.answerId)
-        : condition.answerId === answer
+    const matchedConditions = conditions.filter((condition: Condition) =>
+      Array.isArray(answer) ? answer.includes(condition.answerId) : condition.answerId === answer
     );
 
-    if (matchedCondition) {
-      this.navigateByCondition(matchedCondition);
+    if (matchedConditions.length === 1) {
+      this.navigateByCondition(matchedConditions[0]);
     } else {
       this.defaultNext();
     }

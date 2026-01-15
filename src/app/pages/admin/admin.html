@@ -6,8 +6,43 @@
         <mat-icon>play_arrow</mat-icon>
       </button>
     </div>
-    @for (section of questionnareData; track section.sectionId) {
-    <app-quiz-section [section]="section"> </app-quiz-section>
-    }
+    <mat-accordion>
+      @for (section of questionnareData; track section.sectionId) {
+
+      <mat-expansion-panel
+        (opened)="setActiveSection(section.sectionId)"
+        (closed)="activeSectionId = null"
+      >
+        <mat-expansion-panel-header class="element-header">
+          <div class="element-header-container">
+            <span class="element-number">{{ section.sectionId }}</span>
+            <span class="element-title">{{ section.label }}</span>
+          </div>
+        </mat-expansion-panel-header>
+
+        <app-context-menu
+          #menu
+          [activeSection]="activeSectionId"
+          (action)="handleAction($event)"
+        ></app-context-menu>
+
+        <div class="questions-container" [cdkContextMenuTriggerFor]="menu.contextMenu">
+          @for (question of section.questions; track question.questionId) { @if
+          (!question.isEditing) {
+          <app-quiz-question [question]="question"></app-quiz-question>
+          } } @if ( showCreateQuestionForm && newQuestionId && activeSectionId === section.sectionId
+          ) {
+          <app-create-form
+            [sectionId]="section.sectionId"
+            [questionId]="newQuestionId"
+            [type]="questionType"
+            (close)="closeCreateForm()"
+          ></app-create-form>
+          }
+        </div>
+      </mat-expansion-panel>
+
+      }
+    </mat-accordion>
   </div>
 </div>

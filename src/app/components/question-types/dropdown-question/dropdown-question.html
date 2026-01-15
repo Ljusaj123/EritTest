@@ -1,1 +1,12 @@
-<p>dropdown-question works!</p>
+<mat-form-field class="answers-container">
+  <mat-select placeholder="Select an option" (selectionChange)="onSelectChange($event)">
+    @for (answer of answers; track $index) {
+    <mat-option [value]="answer.label">
+      {{ answer.label }}
+      @if(answer.isFlag && showFlag){
+      <span class="points">{{ answer.points }}pt</span>
+      }
+    </mat-option>
+    }
+  </mat-select>
+</mat-form-field>

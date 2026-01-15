@@ -11,7 +11,6 @@ import { AnswerOption } from '@shared/models';
 })
 export class CheckboxQuestion {
   @Input() answers: AnswerOption[] = [];
-  @Input() isFlag: boolean = false;
   @Input() showFlag: boolean = true;
 
   @Output() selected = new EventEmitter<string[]>();
