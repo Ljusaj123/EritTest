@@ -102,8 +102,12 @@ export class QuestionnareService {
     const section = this.questionnareData.find((section) => section.sectionId === activeSectionId);
     if (!section) return null;
 
-    const lastQuestionId = section.questions[section.questions.length - 1].questionId;
-    const nextQuestionId = this.nextId(lastQuestionId);
+    const lastQuestionId = section.questions[section.questions.length - 1]?.questionId;
+
+    let nextQuestionId;
+
+    if(!lastQuestionId) nextQuestionId = 'Q-001';
+    else nextQuestionId = this.nextId(lastQuestionId);
 
     section.questions.push({
       questionId: nextQuestionId,
