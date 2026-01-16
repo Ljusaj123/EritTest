@@ -1,7 +1,14 @@
 <div class="single-answer-container">
   <mat-form-field>
-    <input matInput placeholder="Your answer" type="text" (input)="onTextChange($event)" />
+    <input
+      matInput
+      placeholder="Your answer"
+      type="text"
+      [(ngModel)]="enteredValue"
+      (ngModelChange)="answered.emit($event)"
+    />
   </mat-form-field>
+
   @if (answers[0]?.isFlag && showFlag) {
   <span class="points">{{ answers[0].points }}pt</span>
   }

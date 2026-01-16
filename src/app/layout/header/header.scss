@@ -2,11 +2,11 @@
 
 .header {
   background-color: $color-primary;
-  height: 55px;
+  min-height: 55px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 16px;
+  padding: 0.3rem 1.15rem;
 
   span {
     color: white;
@@ -15,31 +15,21 @@
 
   .header-title {
     width: 100%;
-
-    font-size: 20px;
+    font-size: clamp(1rem, 2vw, 1.4rem);;
     line-height: 32px;
-    text-indent: 20px;
+    text-indent: 1.43rem;
     letter-spacing: 0.25px;
   }
 
   .icons-container {
     display: flex;
-    gap: 20px;
     align-items: center;
 
+    gap: clamp(0.6rem, 2vw, 1.4rem);
+
     #hr-text {
-      font-size: 22px;
-    }
-  }
-
-  .icon-button {
-    width: 48px;
-    height: 48px;
-    color: white;
-
-    span {
-      font-weight: 600;
-      font-size: 22px;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      line-height: 1.2;
     }
   }
 }
@@ -47,7 +37,8 @@
 .sidenav-container {
   height: calc(100vh - 55px);
   position: absolute;
-  box-shadow: 0px 0px 30px 0px #0000000D;
+  box-shadow: 0px 0px 30px 0px #0000000d;
+  z-index: 10;
 
   top: 55px;
 
@@ -58,7 +49,7 @@
     .user-profile {
       display: flex;
       gap: 12px;
-      padding: 20px 0 15px 25px;
+      padding: 1.43rem 0 15px 25px;
       background-color: $base-2;
 
       #avatar {
@@ -70,7 +61,7 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 20px;
+        font-size: 1.43rem;
         font-weight: 700;
         line-height: 1.2;
       }
@@ -81,7 +72,7 @@
 
         #username {
           font-weight: 600;
-          font-size: 18px;
+          font-size: 1.29rem;
         }
       }
     }

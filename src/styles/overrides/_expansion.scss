@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use '../abstracts/variables.scss' as *;
+@use 'sass:map';
 
 @include mat.expansion-overrides(
   (
@@ -7,13 +8,11 @@
     container-elevation-shadow: none,
     header-hover-state-layer-color: $base-2,
     header-focus-state-layer-color: $base-2,
-    header-collapsed-state-height: 42px,
-    header-expanded-state-height: 42px,
     container-background-color: white,
   )
 );
 
-.mat-drawer{
+.mat-drawer {
   border-radius: 0 !important;
 }
 
@@ -26,6 +25,23 @@
   }
 }
 
-.mat-expansion-panel, .mat-expansion-panel-spacing{
-  margin: 0 !important
+.mat-expansion-panel,
+.mat-expansion-panel-spacing {
+  margin: 0 !important;
+}
+
+.mat-expansion-panel-header {
+  min-height: 3.43rem !important;
+  height: 3.43rem !important;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+  min-height: 3.43rem !important;
+  height: 3.43rem !important;
+}
+
+@media (max-width: map.get($breakpoints, tablet)) {
+  .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
 }

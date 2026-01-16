@@ -21,17 +21,17 @@
 
 @mixin icon-size($size) {
   @if $size == sm {
-    width: 18px;
-    height: 18px;
-    font-size: 18px;
+    width: clamp(1rem, 2vw, 1.29rem);
+    height: clamp(1rem, 2vw, 1.29rem);
+    font-size: clamp(1rem, 2vw, 1.29rem);
   } @else if $size == md {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
+    width: clamp(1.14rem, 2.5vw, 1.43rem);
+    height: clamp(1.14rem, 2.5vw, 1.43rem);
+    font-size: clamp(1.14rem, 2.5vw, 1.43rem);
   } @else if $size == lg {
-    width: 28px;
-    height: 28px;
-    font-size: 28px;
+    width: clamp(1.5rem, 4vw, 2rem);
+    height: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.5rem, 4vw, 2rem);
   }
 }
 
@@ -53,51 +53,51 @@
 
 @mixin btn-icon-size($size) {
   @if $size == sm {
-    height: 28px;
-    width: 28px;
+    height: clamp(1.8rem, 4vw, 2rem);
+    width: clamp(1.8rem, 4vw, 2rem);
 
     mat-icon {
-      width: 16px;
-      height: 16px;
-      font-size: 16px;
+      width: clamp(0.9rem, 2vw, 1.14rem);
+      height: clamp(0.9rem, 2vw, 1.14rem);
+      font-size: clamp(0.9rem, 2vw, 1.14rem);
     }
   } @else if $size == md {
-    height: 36px;
-    width: 36px;
+    height: clamp(2.3rem, 5vw, 2.57rem);
+    width: clamp(2.3rem, 5vw, 2.57rem);
 
     mat-icon {
-      width: 20px;
-      height: 20px;
-      font-size: 20px;
+      width: clamp(1.1rem, 2.5vw, 1.43rem);
+      height: clamp(1.1rem, 2.5vw, 1.43rem);
+      font-size: clamp(1.1rem, 2.5vw, 1.43rem);
     }
   } @else if $size == lg {
-    height: 44px;
-    width: 44px;
+    height: clamp(2.8rem, 6vw, 3.14rem);
+    width: clamp(2.8rem, 6vw, 3.14rem);
 
     mat-icon {
-      width: 24px;
-      height: 24px;
-      font-size: 24px;
+      width: clamp(1.35rem, 3vw, 1.71rem);
+      height: clamp(1.35rem, 3vw, 1.71rem);
+      font-size: clamp(1.35rem, 3vw, 1.71rem);
     }
   } @else if $size == xl {
-    height: 52px;
-    width: 52px;
+    height: clamp(3.3rem, 7vw, 3.71rem);
+    width: clamp(3.3rem, 7vw, 3.71rem);
 
     mat-icon {
-      width: 28px;
-      height: 28px;
-      font-size: 28px;
+      width: clamp(1.6rem, 3.5vw, 2rem);
+      height: clamp(1.6rem, 3.5vw, 2rem);
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
     }
   }
 }
 
 @mixin btn-size($size) {
   @if $size == sm {
-    height: 28px;
+    height: clamp(1.8rem, 4vw, 2rem);
   } @else if $size == md {
-    height: 36px;
+    height: clamp(2.3rem, 5vw, 2.57rem);
   } @else if $size == lg {
-    height: 44px;
+    height: clamp(2.8rem, 6vw, 3.14rem);
   }
 }
 

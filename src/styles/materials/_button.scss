@@ -1,97 +1,94 @@
 @use '../components/button' as btn;
 
+$btn: '.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button';
+$icon-btn: '.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base';
+$icon: '.mat-icon.material-icons';
+
 //default
-.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button {
+#{$btn} {
   @include btn.btn-base;
   @include btn.btn-size(md);
 }
 
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base {
+#{$icon-btn} {
   @include btn.btn-icon-base;
   @include btn.btn-icon-size(md);
 }
 
-.mat-icon.material-icons {
+#{$icon} {
   @include btn.icon-base;
   @include btn.icon-size(md);
 }
 
 //sizes
-.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--sm {
-  @include btn.btn-size(sm);
+
+#{$btn} {
+  &.btn--sm {
+    @include btn.btn-size(sm);
+  }
+  &.btn--md {
+    @include btn.btn-size(md);
+  }
+  &.btn--lg {
+    @include btn.btn-size(lg);
+  }
 }
 
-.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--md {
-  @include btn.btn-size(md);
+#{$icon-btn} {
+  &.btn--sm {
+    @include btn.btn-icon-size(sm);
+  }
+  &.btn--md {
+    @include btn.btn-icon-size(md);
+  }
+  &.btn--lg {
+    @include btn.btn-icon-size(lg);
+  }
+  &.btn--xl {
+    @include btn.btn-icon-size(xl);
+  }
 }
 
-.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--lg {
-  @include btn.btn-size(lg);
-}
-
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--sm {
-  @include btn.btn-icon-size(sm);
-}
-
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--md {
-  @include btn.btn-icon-size(md);
-}
-
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--lg {
-  @include btn.btn-icon-size(lg);
-}
-
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--xl {
-  @include btn.btn-icon-size(xl);
-}
-
-
-
-.mat-icon.material-icons.icon--sm {
-  @include btn.icon-size(sm);
-}
-
-.mat-icon.material-icons.icon--md {
-  @include btn.icon-size(md);
-}
-
-.mat-icon.material-icons.icon--lg {
-  @include btn.icon-size(lg);
+#{$icon} {
+  &.icon--sm {
+    @include btn.icon-size(sm);
+  }
+  &.icon--md {
+    @include btn.icon-size(md);
+  }
+  &.icon--lg {
+    @include btn.icon-size(lg);
+  }
 }
 
 //types
-.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--normal,
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--normal {
-  @include btn.btn-normal;
+#{$btn},
+#{$icon-btn} {
+  &.btn--primary {
+    @include btn.btn-primary;
+  }
+  &.btn--accent {
+    @include btn.btn-accent;
+  }
+  &.btn--normal {
+    @include btn.btn-normal;
+  }
+  &.btn--disabled {
+    @include btn.btn-disabled;
+  }
 }
 
-.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--primary,
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--primary {
-  @include btn.btn-primary;
-}
-
-.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--accent,
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--accent {
-  @include btn.btn-accent;
-}
-
-.mdc-button.mat-mdc-button-base.mat-mdc-unelevated-button.btn--disabled,
-.mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base.btn--disabled {
-  @include btn.btn-disabled;
-}
-
-.mat-icon.material-icons.icon--primary {
-  @include btn.icon-primary;
-}
-
-.mat-icon.material-icons.icon--normal {
-  @include btn.icon-normal;
-}
-
-.mat-icon.material-icons.icon--white {
-  @include btn.icon-white;
-}
-
-.mat-icon.material-icons.icon--accent {
-  @include btn.icon-accent;
+#{$icon} {
+  &.icon--primary {
+    @include btn.icon-primary;
+  }
+  &.icon--accent {
+    @include btn.icon-accent;
+  }
+  &.icon--normal {
+    @include btn.icon-normal;
+  }
+  &.icon--white {
+    @include btn.icon-white;
+  }
 }

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { QuizQuestion } from '../../components/quiz-question/quiz-question';
 import { Condition, Question, Section } from '@shared/models';
 import { QuestionnareService } from '@core/questionnare.service';
+import { QuestionItem } from 'src/app/components/question-item/question-item';
 
 @Component({
   selector: 'app-questionnare',
-  imports: [CommonModule, MatButtonModule, QuizQuestion],
+  imports: [CommonModule, MatButtonModule, QuestionItem],
   templateUrl: './questionnare.html',
   styleUrl: './questionnare.scss',
 })
@@ -35,11 +35,19 @@ export class Questionnare {
     const answer = this.answersState.get(this.currentQuestion.questionId);
     if (!answer) return;
 
-    this.history.push({
+    const currentHistoryEntry = {
       section: this.currentSectionIndex,
       question: this.currentQuestionIndex,
-    });
+    };
 
+    const lastHistory = this.history[this.history.length - 1];
+    if (
+      !lastHistory ||
+      lastHistory.section !== currentHistoryEntry.section ||
+      lastHistory.question !== currentHistoryEntry.question
+    ) {
+      this.history.push(currentHistoryEntry);
+    }
     const conditions = this.currentQuestion.conditions;
 
     if (!conditions || !conditions.length) {

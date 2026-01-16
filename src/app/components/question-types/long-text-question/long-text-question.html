@@ -1,6 +1,12 @@
 <div class="single-answer-container">
   <mat-form-field>
-    <textarea matInput rows="4" placeholder="Your answer" (input)="onTextChange($event)"></textarea>
+    <textarea
+      matInput
+      rows="4"
+      placeholder="Your answer"
+      [(ngModel)]="enteredValue"
+      (ngModelChange)="answered.emit($event)"
+    ></textarea>
   </mat-form-field>
   @if (answers[0]?.isFlag && showFlag) {
   <span class="points">{{ answers[0].points }}pt</span>

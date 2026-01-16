@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AnswerOption } from '@shared/models';
 
@@ -7,7 +7,8 @@ import { AnswerOption } from '@shared/models';
   selector: 'app-checkbox-question',
   imports: [MatCheckboxModule, CommonModule],
   templateUrl: './checkbox-question.html',
-  styleUrl: './checkbox-question.scss',
+  styleUrls: ['./checkbox-question.scss'],
+  standalone: true,
 })
 export class CheckboxQuestion {
   @Input() answers: AnswerOption[] = [];
@@ -15,11 +16,24 @@ export class CheckboxQuestion {
 
   @Output() selected = new EventEmitter<string[]>();
 
-  private selectedAnswers = new Set<string>();
+  selectedAnswers: Set<string> = new Set<string>();
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['answers'] && !changes['answers'].firstChange) {
+      this.resetAnswers();
+    }
+  }
 
   toggle(label: string) {
-    this.selectedAnswers.has(label) ? this.selectedAnswers.delete(label) : this.selectedAnswers.add(label);
-
+    if (this.selectedAnswers.has(label)) {
+      this.selectedAnswers.delete(label);
+    } else {
+      this.selectedAnswers.add(label);
+    }
     this.selected.emit([...this.selectedAnswers]);
+  }
+
+  resetAnswers() {
+    this.selectedAnswers.clear();
   }
 }

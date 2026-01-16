@@ -7,10 +7,10 @@ import { CreateAction, QuestionType, Section } from '@shared/models';
 import { QuestionnareService } from '@core/questionnare.service';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ContextMenu } from 'src/app/components/context-menu/context-menu';
-import { QuizQuestion } from 'src/app/components/quiz-question/quiz-question';
 import { CreateForm } from 'src/app/components/create-form/create-form';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { MatExpansionModule } from "@angular/material/expansion";
+import { QuestionItem } from 'src/app/components/question-item/question-item';
 
 @Component({
   selector: 'app-admin-page',
@@ -20,10 +20,10 @@ import { MatExpansionModule } from "@angular/material/expansion";
     MatButtonModule,
     CdkAccordionModule,
     ContextMenu,
-    QuizQuestion,
     CreateForm,
     CdkMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+    QuestionItem
 ],
   templateUrl: './admin.html',
   styleUrl: './admin.scss',

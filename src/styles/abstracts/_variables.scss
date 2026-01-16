@@ -20,3 +20,10 @@ $accent-3: #FEA439;
 $alert: #DF0000;
 
 $overlay: rgba(0, 55, 105, 0.8);
+
+$breakpoints: (
+  mobile: 480px,
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1200px
+);

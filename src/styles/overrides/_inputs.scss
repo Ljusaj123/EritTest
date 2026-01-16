@@ -20,12 +20,12 @@
 
 .mat-mdc-form-field mat-label {
   color: $font-dark;
-  line-height: 24px;
+  line-height: 1.42rem;
 }
 
 .mdc-text-field--no-label .mat-mdc-form-field-infix {
-  padding: 4px 0 !important;
-  min-height: 32px;
+  padding: 0.28rem 0 !important;
+  min-height: 2.28rem;
 }
 
 .mat-mdc-select-arrow svg {
@@ -40,7 +40,7 @@
   content: 'keyboard_arrow_down';
   font-family: 'Material Icons';
   position: absolute;
-  font-size: 20px;
+  font-size: 1.42rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -49,11 +49,11 @@
 
 .mdc-text-field--filled .mdc-text-field__input {
   color: $font-dark !important;
-  line-height: 24px !important;
+  line-height: 1.42rem !important;
 }
 
 .mdc-text-field {
-  padding: 0 5px !important;
+  padding: 0 0.35rem !important;
 }
 
 .mat-mdc-form-field-subscript-wrapper{

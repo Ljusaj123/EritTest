@@ -3,11 +3,11 @@
 form {
   background-color: $base;
 
-  .question-header {
+  .form-question-header {
     display: flex;
-    align-items: baseline;
-    gap: 10px;
-    padding: 10px 20px;
+    align-items: center;
+    gap: 0.71rem;
+    padding: 0.71rem 1.43rem;
 
     span {
       font-weight: 600;
@@ -19,23 +19,22 @@ form {
   }
 
   .options {
-    padding: 10px 20px 10px 50px;
+    padding: 0.71rem 1.43rem 0.71rem 3.57rem;
   }
 
   .add-option {
-    padding: 10px 5px;
+    padding: 0.71rem 0.35rem;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.71rem;
 
-    span{
+    span {
       font-weight: 600;
     }
-
   }
 
   .conditions {
-    padding: 15px 0 10px 20px;
+    padding: 1.07rem 0 0.71rem 1.43rem;
 
     &-title {
       font-weight: 600;
@@ -43,8 +42,17 @@ form {
 
     .options {
       display: flex;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 0.71rem;
       align-items: center;
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, laptop)) {
+  form {
+    .options {
+      margin-bottom: 2rem;
     }
   }
 }

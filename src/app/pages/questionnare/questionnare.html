@@ -1,11 +1,12 @@
 <div>
   <p class="stepper">Naslovna-> Ispunjavanje upitnika</p>
   <div class="surface">
-    <app-quiz-question
+    <app-question-item
       [question]="currentQuestion"
       [showFlag]="false"
       (selected)="onAnswerChange($event)"
-    ></app-quiz-question>
+      [key]="currentQuestion.questionId" 
+    ></app-question-item>
 
     <div class="button-container">
       <button

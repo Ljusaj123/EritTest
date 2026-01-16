@@ -1,5 +1,5 @@
 <mat-form-field class="answers-container">
-  <mat-select placeholder="Select an option" (selectionChange)="onSelectChange($event)">
+  <mat-select placeholder="Select an option" (selectionChange)="onSelectionChange($event)">
     @for (answer of answers; track $index) {
     <mat-option [value]="answer.label">
       {{ answer.label }}

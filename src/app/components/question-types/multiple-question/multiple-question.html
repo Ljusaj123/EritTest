@@ -1,13 +1,17 @@
-<mat-radio-group class="answers-container" (change)="selected.emit($event.value)">
+<mat-radio-group
+  class="answers-container"
+  [(ngModel)]="selectedValue"
+  (change)="onSelectionChange($event.value)"
+>
   @for (answer of answers; track $index) {
-  <mat-radio-button
-    [value]="answer.label"
-    [ngClass]="{ 'radio--alert': answer.isFlag && showFlag }"
-  >
-    {{ answer.label }}
-    @if(answer.isFlag && showFlag ){
-    <span class="points">{{ answer.points }}pt</span>
-    }
-  </mat-radio-button>
+    <mat-radio-button
+      [value]="answer.label"
+      [ngClass]="{ 'radio--alert': answer.isFlag && showFlag }"
+    >
+      {{ answer.label }}
+      @if(answer.isFlag && showFlag ){
+        <span class="points">{{ answer.points }}pt</span>
+      }
+    </mat-radio-button>
   }
 </mat-radio-group>

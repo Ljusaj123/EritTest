@@ -1,14 +1,14 @@
 <div class="answers-container">
   @for (answer of answers; track $index) {
-  <mat-checkbox
-    [ngClass]="{ 'checkbox--alert': answer.isFlag && showFlag }"
-    (change)="toggle(answer.label)"
-  >
-    {{ answer.label }}
-
-    @if(answer.isFlag && showFlag){
-    <span class="points">{{ answer.points }}pt</span>
-    }
-  </mat-checkbox>
+    <mat-checkbox
+      [ngClass]="{ 'checkbox--alert': answer.isFlag && showFlag }"
+      [checked]="selectedAnswers.has(answer.label)" 
+      (change)="toggle(answer.label)"
+    >
+      {{ answer.label }}
+      @if(answer.isFlag && showFlag){
+        <span class="points">{{ answer.points }}pt</span>
+      }
+    </mat-checkbox>
   }
 </div>

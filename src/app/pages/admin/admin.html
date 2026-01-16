@@ -28,7 +28,7 @@
         <div class="questions-container" [cdkContextMenuTriggerFor]="menu.contextMenu">
           @for (question of section.questions; track question.questionId) { @if
           (!question.isEditing) {
-          <app-quiz-question [question]="question"></app-quiz-question>
+          <app-question-item [question]="question"></app-question-item>
           } } @if ( showCreateQuestionForm && newQuestionId && activeSectionId === section.sectionId
           ) {
           <app-create-form
