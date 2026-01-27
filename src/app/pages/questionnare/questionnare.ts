@@ -24,7 +24,7 @@ export class Questionnare {
   }
 
   get currentQuestion() {
-    return this.questionnareData[this.currentSectionIndex].questions[this.currentQuestionIndex];
+    return this.questionnareService.getCurrentQuestion(this.currentSectionIndex, this.currentQuestionIndex )
   }
 
   onAnswerChange(value: string | string[]) {
@@ -67,7 +67,7 @@ export class Questionnare {
   }
 
   defaultNext() {
-    const currentSection = this.questionnareData[this.currentSectionIndex];
+    const currentSection = this.questionnareService.getCurrentSection(this.currentSectionIndex)
 
     if (this.currentQuestionIndex < currentSection.questions.length - 1) {
       this.currentQuestionIndex++;
@@ -98,8 +98,8 @@ export class Questionnare {
     }
 
     if (condition.type === 'question') {
-      const section = this.questionnareData[this.currentSectionIndex];
-      const questionIndex = section.questions.findIndex(
+      const currentSection = this.questionnareService.getCurrentSection(this.currentSectionIndex);
+      const questionIndex = currentSection.questions.findIndex(
         (question: Question) => question.questionId === condition.target
       );
       if (questionIndex != -1) {

@@ -2,6 +2,12 @@
 @use '../abstracts/variables.scss' as *;
 @use 'sass:map';
 
+@include mat.toolbar-overrides(
+  (
+    standard-height: 55px,
+  )
+);
+
 @include mat.expansion-overrides(
   (
     container-shape: 0,
@@ -32,16 +38,21 @@
 
 .mat-expansion-panel-header {
   min-height: 3.43rem !important;
-  height: 3.43rem !important;
+  height: fit-content !important;
 }
 
 .mat-expansion-panel-header.mat-expanded {
   min-height: 3.43rem !important;
-  height: 3.43rem !important;
+  height: fit-content !important;
 }
 
 @media (max-width: map.get($breakpoints, tablet)) {
   .mat-expansion-panel-body {
     padding: 0 !important;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 !important;
+    padding-right: 0.8rem !important;
   }
 }

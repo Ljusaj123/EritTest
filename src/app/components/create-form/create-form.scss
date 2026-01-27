@@ -53,6 +53,11 @@ form {
   form {
     .options {
       margin-bottom: 2rem;
+      padding-left: 2rem;
+    }
+
+    .conditions .options{
+      gap: 1.5rem;
     }
   }
 }

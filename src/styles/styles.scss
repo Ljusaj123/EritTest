@@ -16,6 +16,7 @@
 @include mat.core();
 
 html {
+  font-size: 14px;
   height: 100%;
   @include mat.theme(
     (
@@ -30,7 +31,6 @@ html {
 body {
   color-scheme: light;
   font-family: 'Open Sans';
-  font-size: 14px;
   color: $font-dark;
   margin: 0;
   height: 100%;

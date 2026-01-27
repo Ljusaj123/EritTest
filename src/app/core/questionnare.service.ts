@@ -77,7 +77,7 @@ export class QuestionnareService {
 
   getQuestionIdsBySection(sectionId: string): string[] {
     const section = this.questionnareData.find(
-      (section: Section) => section.sectionId === sectionId
+      (section: Section) => section.sectionId === sectionId,
     );
 
     if (!section) {
@@ -106,7 +106,7 @@ export class QuestionnareService {
 
     let nextQuestionId;
 
-    if(!lastQuestionId) nextQuestionId = 'Q-001';
+    if (!lastQuestionId) nextQuestionId = 'Q-001';
     else nextQuestionId = this.nextId(lastQuestionId);
 
     section.questions.push({
@@ -142,13 +142,13 @@ export class QuestionnareService {
 
   setActiveQuestion(sectionId: string, questionId: string): void {
     const section = this.questionnareData.find(
-      (section: Section) => section.sectionId === sectionId
+      (section: Section) => section.sectionId === sectionId,
     );
     this.activeSection = sectionId;
     if (!section) return;
 
     const question = section.questions.find(
-      (question: Question) => question.questionId === questionId
+      (question: Question) => question.questionId === questionId,
     );
     if (!question) return;
 
@@ -163,14 +163,22 @@ export class QuestionnareService {
     this.syncToStore(updated);
   }
 
+  getCurrentQuestion(currentSectionIndex: number, currentQuestionIndex: number) {
+    return this.questionnareData[currentSectionIndex].questions[currentQuestionIndex];
+  }
+
+  getCurrentSection(currentSectionIndex: number) {
+    return this.questionnareData[currentSectionIndex];
+  }
+
   private syncToStore(updated: Question): void {
     const section = this.questionnareData.find(
-      (section: Section) => section.sectionId === this.activeSection
+      (section: Section) => section.sectionId === this.activeSection,
     );
     if (!section) return;
 
     const index = section.questions.findIndex(
-      (question: Question) => question.questionId === updated.questionId
+      (question: Question) => question.questionId === updated.questionId,
     );
 
     if (index !== -1) {
